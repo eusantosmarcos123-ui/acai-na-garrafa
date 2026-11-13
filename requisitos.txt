@@ -1,0 +1,371 @@
+﻿Documento de Pesquisa e Especificação: Site de Açaí na Garrafa
+1. Funcionalidades Interativas e UX
+1.1 Configurador de Kit / Pack Personalizado ("Build Your Box")
+A. Benchmarks de Mercado e Referências (Marcas D2C)
+* Greenpeople & Naked Juice: Utilizam seletores de caixas modulares focados em nutrição e saúde, onde a unidade básica de venda não é o item individual, mas o conjunto (fardo ou caixa refrigerada). A interface visual exibe slots vazios que são preenchidos conforme os sabores são selecionados.
+* Huel: Foco em cálculo visual dinâmico de volume e economia acumulada. À medida que o cliente atinge patamares pré-definidos (ex: 6, 12 ou 24 garrafas), o preço unitário diminui em tempo real, informando explicitamente o percentual de desconto obtido.
+B. Mecânica e Arquitetura de Interação (UX Flow)
+1. Definição de Tamanho do Recipiente:
+   * Seleção prévia da capacidade base das garrafas: 300ml, 500ml ou 1 Litro (evitar misturar garrafas de alturas incompatíveis na mesma embalagem primária de transporte).
+2. Definição do Tamanho da Caixa (Pack Slots):
+   * Opções padrão: Kit Degustação (4 garrafas), Kit Semanal (6 garrafas) ou Kit Família/Atleta (12 garrafas).
+   * A interface exibe indicadores visuais de progresso (ex: "3 de 6 garrafas selecionadas").
+3. Distribuição Livre de Sabores / Blends:
+   * O cliente clica ou toca nos botões de incremento/decremento (+ / -) de cada blend disponível (ex: Puro/Zero Açúcar, Tradicional, Com Banana, Proteico com Whey).
+   * O botão de avançar para checkout só é habilitado quando a caixa atinge exatamente 100% de ocupação dos slots.
+C. Lógica Comercial e Desconto Progressivo
+Tamanho da Caixa
+	Percentual de Desconto
+	Benefício Adicional
+	Gatilho de Incentivo (UX)
+	4 Garrafas
+	Preço cheio (Base)
+	Padrão
+	"Adicione 2 garrafas para ganhar 5% de desconto"
+	6 Garrafas
+	5% a 7% de desconto
+	Frete com desconto
+	"Adicione mais 6 garrafas para 15% OFF e frete grátis"
+	12 Garrafas
+	10% a 15% de desconto
+	Frete térmico gratuito
+	"Melhor valor por garrafa atingido!"
+	
+
+* Redução de Fricção: Exibir uma barra visual animada informando: "Adicione mais 2 garrafas para desbloquear 10% de desconto e frete reduzido".
+D. Especificações Técnicas de Implementação Web
+* Gerenciamento de Estado: Array de objetos no frontend contendo IDs de produto, quantidade selecionada e capacidade máxima da caixa (totalUnits <= packSizeLimit).
+* Payload Estruturado para o Checkout: Objeto JSON pronto para ser enviado via API ou formatado como mensagem limpa de WhatsApp:
+   * Tipo de Pack: 6 garrafas de 500ml
+   * Composição: 3x Tradicional, 2x Zero Açúcar, 1x Proteico
+   * Valor Total: Com desconto aplicado dinamicamente
+
+
+1.2 Seletor por Objetivo / Momento de Consumo
+A. Benchmarks de Mercado e Padrões de Navegação (D2C e Nutrição Esportiva)
+* Categorização Baseada em Intenção: Em e-commerces de ponta (como marcas de sucos funcionais e nutrição esportiva), o usuário não busca apenas pelo ingrediente ("açaí"), mas pela dor ou necessidade imediata ("energia pré-treino", "lanche sem quebrar a dieta", "recuperação rápida").
+* Navegação Não-Hierárquica (Pill Tags / Segmented Controls): O uso de seletores horizontais em formato de botões de filtro rápido ("chips" ou "pills") na parte superior da listagem reduz a sobrecarga cognitiva e permite filtragem instantânea sem recarregar a página.
+B. Segmentação por Perfis de Clientes (Personas & Grupos Específicos)
+Grupo 1: Consumidor Casual / Refrescância & Dia a Dia
+* Perfil: Pessoa que busca apenas um lanche saboroso, sobremesa saudável ou uma pausa refrescante no calor da rotina de trabalho/estudo.
+* Necessidade: Sabor agradável, cremosidade, praticidade imediata e energia leve sem complicação.
+* Blend Recomendado: Açaí batido com frutas tradicionais (morango, banana) e toque suave de guaraná.
+* Gatilho de Conversão / Mensagem: "Sua pausa refrescante, saborosa e pronta para beber em qualquer lugar."
+* Selo / Badge no Card: Refrescante, Pronto para Beber, Sabor Tradicional
+Grupo 2: Atleta & Praticante de Atividade Física (Performance / Treino)
+* Perfil: Frequentadores de academia, corredores, ciclistas e atletas funcionais que usam o açaí estrategicamente para suporte energético ou recuperação muscular.
+* Necessidade: Alta densidade de carboidratos complexos de rápida digestão (pré-treino) ou aporte proteico reforçado com aminoácidos para recuperação muscular (pós-treino).
+* Blend Recomendado: Açaí reforçado com Whey Protein, albumina vegetal ou pasta de amendoim integral e aveia.
+* Gatilho de Conversão / Mensagem: "Combustível limpo para sua máxima performance e recuperação rápida pós-treino."
+* Selo / Badge no Card: Alto Teor de Proteína, Energia Pura, Performance Muscular
+Grupo 3: Saudável & Restritivo (Zero Açúcar / Clean Label / Diabéticos / Low-Carb)
+* Perfil: Pessoas em dietas restritivas, que contam calorias, diabéticos ou adeptos do estilo de vida clean label (sem aditivos e sem açúcar).
+* Necessidade: Transparência total de ingredientes, ausência de xaropes ricos em frutose, baixo índice glicêmico e polpa pura.
+* Blend Recomendado: Polpa de açaí pura (médio ou grosso), batida com água mineral ou água de coco, sem xaropes industriais e adoçada exclusivamente com frutas ou adoçantes naturais (Stévia/Xilitol).
+* Gatilho de Conversão / Mensagem: "Nutrição pura e sem culpa: a energia original da fruta, 100% livre de açúcares adicionados."
+* Selo / Badge no Card: Zero Açúcar, 100% Puro / Clean Label, Keto-Friendly
+Grupo 4: Foco & Produtividade (Estudantes, Concurseiros & Profissionais)
+* Perfil: Pessoas que passam longas horas concentradas estudando ou trabalhando no computador e precisam de energia mental constante sem o pico e queda brusca de açúcar.
+* Necessidade: Aporte antioxidante, liberação gradual de energia e praticidade para consumir direto da garrafa na mesa de trabalho ou estudo.
+* Blend Recomendado: Açaí puro batido com guaraná natural em pó, cacau 70% ou especiarias estimulantes suaves (canela/gengibre).
+* Gatilho de Conversão / Mensagem: "Energia sustentável e foco limpo para suas longas jornadas de estudo e trabalho."
+* Selo / Badge no Card: Foco & Energia, Antioxidante Natural, Sem Queda Brusca
+Grupo 5: Família & Estoque Doméstico
+* Perfil: Pais, famílias ou pessoas que compram para abastecer a geladeira da casa para o consumo de vários dias.
+* Necessidade: Rendimento em volume, melhor custo-benefício por litro e facilidade de conservação no freezer.
+* Blend Recomendado: Garrafas de maior capacidade (500ml e 1L) em fardos/packs familiares com sabores variados para agradar diferentes idades.
+* Gatilho de Conversão / Mensagem: "Geladeira sempre abastecida com a melhor bebida funcional para toda a família."
+* Selo / Badge no Card: Pack Familiar, Melhor Custo/Litro, Ideal para Compartilhar
+C. Arquitetura de Interação e UI/UX no Site
+4. Barra de Filtros Inteligentes (Sticky Header na Seção de Produtos):
+   * Uma barra fixa com chips de seleção única ou combinável: [Todos], [⚡ Pré/Pós-Treino], [🍃 Zero Açúcar], [🍓 Lanche Prático].
+   * Estado Ativo: Visual de alto contraste (fundo destacado e borda evidente) para indicar com clareza a seleção atual.
+5. Cards de Produto Informativos e Limpos:
+   * Micro-badges no topo da foto: Rótulo sutil indicando o objetivo principal (ex: selo "High Protein" ou "Zero Açúcar").
+   * Informação Nutricional em 3 Ícones: Calorias (kcal), Proteínas (g) e Carboidratos (g) por porção visíveis de imediato no card, sem obrigar o usuário a abrir um modal para ver o básico.
+   * CTA Direto: Botão discreto [+ Adicionar à Caixa] ou [Ver Detalhes do Blend].
+D. Especificações Técnicas de Frontend
+* Filtragem Client-Side Reativa:
+   * Cada garrafa possui metadados em array de tags (ex: tags: ['pre_treino', 'high_protein']).
+   * A filtragem deve ocorrer instantaneamente no estado local (sem requisição adicional ao servidor), garantindo transição visual fluida (animações CSS de fade/scale com display: grid ou flexbox).
+* Sincronização com o Configurador de Packs:
+   * O seletor de objetivo deve poder ser utilizado tanto na vitrine geral quanto dentro do próprio configurador de kits ("Build Your Box"), permitindo que o cliente filtre os sabores enquanto preenche os slots da caixa.
+1.3 Simulador de Frete / Pontos de Retirada Térmica (Click & Collect)
+A. Benchmarks de Logística Refrigerada e Modelos D2C de Alimentos Frescos
+* Cadeia de Frio Local (Cold Chain Delivery): Em negócios de sucos funcionais e polpas nobres, o maior fator de abandono de carrinho é a dúvida do cliente se o produto chegará descongelado ou pastoso. Marcas de ponta eliminam essa incerteza comunicando de imediato a embalagem isotérmica e o tempo exato de rota.
+* Modelo "Click & Collect" Estratégico (Hubs de Proximidade): Empresas de nutrição esportiva e alimentos saudáveis utilizam redes parceiras (boxes de crossfit, academias, lojas de suplementos e empórios) como pontos de coleta refrigerados. O cliente economiza o valor da taxa de entrega e retira a garrafa imediatamente trincando de gelada antes ou após o treino.
+B. Mecânica e Arquitetura de Interação do Simulador (UX Flow)
+6. Entrada de Dados Simplificada (Zero Fricção):
+   * Campo único e intuitivo: digitação de CEP ou seleção em dropdown do bairro local (essencial para cidades do interior ou entregas em bairros com CEP único).
+   * Botão de geolocalização opcional: "Usar minha localização atual".
+7. Resposta Visual Instantânea (Feedback em 3 Níveis):
+   * Opção 1: Entrega Expressa (Same-Day / Pronta Entrega): Informa o tempo estimado (ex: "Entrega em até 45–60 min via bag térmica").
+   * Opção 2: Entrega Programada / Turnos Fixos: Para compras em fardo/pack (ex: "Receba hoje no turno da tarde: 16h às 18h" ou "Agende para amanhã cedo").
+   * Opção 3: Retirada Térmica Grátis (Click & Collect): Lista os 2 pontos parceiros mais próximos com distância aproximada, horário de funcionamento e status: "Disponível no freezer parceiro da Academia X - Retire em até 2h sem custo de frete".
+8. Indicador de Embalagem Térmica Garantida:
+   * Micro-selo visual logo abaixo do cálculo: "Seu pack viaja em embalagem isotérmica com gelo reutilizável lacrado. Chega gelado ou seu dinheiro de volta."
+C. Lógica Comercial e Regras de Negócio de Frete
+* Frete com Desconto Progressivo:
+   * Compra avulsa/mínima: Taxa padrão de entrega por zona/bairro.
+   * Pack com 6 garrafas: Taxa de entrega reduzida (50% OFF no frete).
+   * Pack com 12 garrafas ou Assinatura: Frete Grátis garantido.
+* Política de Retirada Parceira:
+   * Custo de frete zero para qualquer quantidade, incentivando o fluxo físico de clientes para dentro dos parceiros conveniados (academias e lojas parceiras).
+D. Especificações Técnicas de Implementação Web
+* Mecanismo de Validação Client-Side:
+   * Tabela estática/JSON local mapeando faixas de CEP ou nomes de bairros locais, valores de taxa e prazos médios de entrega.
+   * Validação instantânea onInput / onChange, sem necessidade de recarregar a tela ou esperar chamadas lentas de APIs de correios.
+* Integração com o Pedido:
+   * Ao selecionar o método (Entrega Expressa vs. Ponto de Coleta), o tipo de frete e o endereço/local de retirada selecionado são injetados diretamente no payload final do checkout (para WhatsApp ou gateway).
+2. Proposta de Valor, Transparência e Embalagem
+2.1 Foco na Garrafa e Conservação (Cadeia de Frio & Consumo Inteligente)
+A. Benchmarks de Comunicação Visual em Bebidas Frescas e Funcionais
+* Redução da Incerteza do Consumidor: Em marcas premium de sucos prensados e bebidas ultra-frescas (ex: Naked Juice, Suja Organic e Greenpeople), o cliente busca respostas imediatas sobre durabilidade e segurança alimentar antes de comprar packs volumosos. O uso de pictogramas diretos substitui parágrafos técnicos longos e elimina o receio de deterioração.
+* Microcopy e Instruções de Uso no Frasco: Marcas líderes transformam instruções obrigatórias em rituais de consumo ("Shake Well", "Keep Frosty"), reforçando o aspecto artesanal e natural da bebida (que naturally decanta ou separa fases por não conter emulsificantes artificiais pesados).
+B. Arquitetura da Seção Gráfica no Site (Os 3 Pilares Visuais)
+A interface deve adotar um grid minimalista de 3 blocos/cards de alto contraste com ícones de traço fino (line-icons) ou ilustrações vetorizadas limpas:
+9. Card 1: Como Armazenar (Freezer vs. Geladeira)
+   * Ícone visual: Termômetro / Floco de neve e prateleira de refrigerador.
+   * Informação técnica e clara:
+      * No Freezer (-18°C a -10°C): Conserva sabor, cremosidade e nutrientes por até 90 dias lacrado.
+      * Na Geladeira (2°C a 6°C): Consumo ideal em até 48 a 72 horas após descongelamento gradual.
+   * Dica de ouro (Micro-UX): "Para textura perfeita de 'smoothie', retire do freezer 15 minutos antes de abrir."
+10. Card 2: Como Consumir (Ritual da Garrafa)
+   * Ícone visual: Garrafa inclinada com indicador de movimento / Gotas geladas.
+   * Instruções práticas:
+      * "Agite vigorosamente antes de beber" — garante a homogeneização natural da polpa pura e das frutas batidas.
+      * "Consumir estupidamente gelado" — preserva a densidade aveludada do açaí sem perda de frescor.
+      * "Beba direto da garrafa ou despeje na sua tigela favorita".
+11. Card 3: Especificações da Embalagem & Sustentabilidade
+   * Ícone visual: Escudo de segurança alimentar / Selo de reciclagem universal.
+   * Compromisso técnico e ambiental:
+      * BPA Free (Livre de Bisfenol A): Plástico PET alimentício virgem, seguro para contato alimentar e congelamento sem liberação de toxinas.
+      * Lacre de Segurança Hermético: Tampa com anel inviolável que garante vácuo parcial e zero contato externo até a abertura.
+      * 100% Reciclável: Embalagem e tampa totalmente integráveis à cadeia de reciclagem pós-consumo.
+C. Estratégia de Transparência e Confiança (Trust Signals)
+* Explicação da Separação Natural de Fases:
+   * Inclusão de um aviso visual sutil: "Por ser 100% fruta e polpa de verdade, sem espessantes industriais, é comum haver separação natural. Basta agitar e aproveitar!"
+* Selo de Garantia de Entrega Gelada:
+   * Reforço da garantia de transporte refrigerado: se a garrafa não chegar na temperatura correta para armazenamento, o reenvio é automático sem custos adicionais.
+D. Especificações de Implementação Web (UI/UX)
+* Layout: Grid responsivo de 3 colunas no desktop (grid-template-columns: repeat(3, 1fr)) colapsando para carrossel ou stack vertical no mobile.
+* Acessibilidade: Textos de apoio com contraste mínimo WCAG AA (proporção 4.5:1), tags semânticas <figure> ou <section> e atributos aria-label descritivos para leitores de tela em cada um dos 3 pilares.
+2.2 Tabela Nutricional Limpa (Clean Label & Front-of-Pack Transparency)
+A. Benchmarks de Mercado e Transparência Frontal (Front-of-Pack)
+* Design "Clean Label" Moderno: Marcas de alimentos saudáveis de ponta (como RXBAR, Daily Harvest e Oatly) revolucionaram o design de embalagens e páginas de produto ao trazer a lista completa de ingredientes para a frente do rótulo de forma limpa, direta e legível, sem linguagem técnica confusa.
+* Redução da Ansiedade Nutricional: Clientes contemporâneos desconfiam de açaís que utilizam xaropes hiperconcentrados em glicose e aromatizantes. Exibir a fórmula aberta ("apenas X ingredientes") consolida autoridade, honestidade e valor agregado superior.
+B. Arquitetura dos Cards de Ingredientes Visuais (UI Pattern)
+Em cada página ou modal de detalhes da garrafa, deve haver um bloco visual estruturado em 3 níveis informativos imediatos:
+12. Régua / Barra Proporcional de Ingredientes (Visual Ingredient Breakdown):
+   * Em vez de um parágrafo denso de texto, uma barra segmentada horizontal limpa ou pequenos cartões ilustrados mostrando visualmente a composição:
+      * Exemplo (Blend Tradicional): 80% Polpa Pura de Açaí Especial + 15% Banana Fresca + 5% Água Mineral / Mel Puro.
+13. Os 4 Selos de Transparência Imediata (Micro-Badges):
+   * 0% Conservantes ou Aditivos Químicos
+   * Polpa Especial (Teor Médio/Grosso certificado)
+   * Sem Xarope de Milho ou Frutose Industrial
+   * Fonte de Carboidrato Complexo e Natural
+14. Quadro Nutricional Resumido (Front-Facing Nutrition Card):
+   * Grid minimalista de 4 colunas destacando por porção (ex: por garrafa de 300ml ou 500ml):
+      * Valor Energético: kcal reais da fruta
+      * Carboidratos: Origem discriminada (açúcares intrínsecos da fruta vs. fibras)
+      * Fibras Alimentares: Gramatura de fibras por unidade
+      * Gorduras Boas (Ômega 6 e 9): Destaque aos lipídios naturais benéficos do açaí
+C. Estratégia de Diferenciação: Polpa Grossa vs. Polpa Comum
+* Explicativo Rápido e Descomplicado:
+   * Box com microcopy didático explicando a graduação do açaí:
+      * "Usamos polpa Tipo Grosso (mais de 14% de sólidos da fruta), garantindo textura naturalmente densa e máxima carga de antioxidantes, sem necessidade de amidos, gomas ou espessantes para render."
+D. Especificações de Implementação Web (UI/UX)
+* Componente Reativo de Ingredientes: Componente modular em CSS/React exibindo chips interativos que, ao passar o mouse ou tocar no mobile (hover/tap), exibem a função daquele ingrediente (ex: "Açaí: energia e antioxidantes", "Banana: potássio e doçura natural").
+* Acessibilidade e Semântica: Uso de marcação estruturada HTML5 (<dl>, <dt>, <dd> ou tabelas semânticas) com contraste elevado, permitindo leitura precisa tanto visualmente quanto por leitores de tela.
+3. Modelo Comercial e Logística Especializada
+3.1 Clube de Assinatura Semanal / Quinzenal (Recorrência Programada)
+A. Benchmarks de Mercado e Modelos de Assinatura D2C (Bebidas & Refeições)
+* Modelos de Rotina e Abastecimento (ex: Liv Up, Huel, Nespresso e sucos prensados): Empresas de ponta não tratam a assinatura como um contrato burocrático, mas como um serviço de conveniência que elimina a preocupação de ficar sem estoque na geladeira.
+* Autonomia e Flexibilidade Total ("Zero Trap"): O maior receio do consumidor em assinar é a dificuldade de cancelar ou alterar sabores. Marcas com alta retenção oferecem controle total em um clique: pular semana (pause), trocar combinações de blends ou cancelar sem multas.
+B. Arquitetura do Fluxo de Assinatura (UX Flow no Site)
+15. Passo 1: Frequência de Abastecimento
+   * Seletor intuitivo: [Entrega Semanal] (ideal para consumo contínuo/atletas) vs. [Entrega Quinzenal] (ideal para estoque de freezer e casais).
+16. Passo 2: Definição da Cota e Volume por Envio
+   * Packs pré-calibrados: 6 garrafas/semana (1 por dia útil de treino/trabalho) ou 12 garrafas/semana (famílias ou 2 por dia).
+17. Passo 3: Seleção e Troca Livre de Sabores
+   * O cliente define os blends da primeira remessa e pode personalizar os sabores da semana seguinte direto no painel do usuário ou via link rápido de autoatendimento.
+18. Passo 4: Escolha do Dia Fixo da Rota Fria
+   * O cliente escolhe seu dia fixo de recebimento (ex: "Toda segunda-feira de manhã" para começar a semana abastecido, ou "Toda sexta-feira à tarde").
+C. Lógica Comercial, Precificação e Retenção
+* Vantagem Financeira Explícita:
+   * Desconto recorrente permanente de 15% a 20% em comparação ao preço unitário avulso.
+   * Frete térmico sempre gratuito nas entregas da assinatura.
+* Garantia de Fidelidade sem Bloqueio:
+   * Comunicação em destaque: "Pause quando viajar, troque os sabores a cada remessa e cancele quando quiser sem multas."
+* Benefício de Boas-Vindas: Na primeira remessa da assinatura, inclusão de brinde funcional (ex: ecobag térmica personalizada da marca para transporte até o treino/trabalho).
+D. Especificações Técnicas de Implementação Web
+* Mecanismo de Checkout e Cobrança:
+   * Integração com gateways de pagamento recorrente transparente (ex: Asaas, Pagar.me, Mercado Pago ou Stripe) com suporte a cobrança via Cartão de Crédito ou Pix Recorrente Automático.
+* Notificação Proativa Pré-Envio:
+   * Webhook/Disparo automático 48h antes de cada cobrança e envio (via WhatsApp/SMS): "Seu açaí chega na próxima segunda! Deseja trocar os sabores do seu kit desta semana? Clique aqui."
+3.2 Canal B2B / Revenda Integrado (Food Service & Parceiros Corporativos)
+A. Benchmarks de Mercado e Modelos B2B para Food Service Saudável
+* Segmentação Natural sem Poluição B2C: Marcas de bebidas saudáveis e funcionais mantêm uma divisão clara entre o consumidor final e o lojista parceiro. Em vez de criar um portal complexo e fechado com aprovações demoradas que geram atrito, utilizam uma aba discreta no menu de navegação e no rodapé ("Seja um Revendedor" ou "Para Empresas").
+* Público-Alvo Prioritário:
+   * Academias, estúdios de pilates e boxes de CrossFit (alta afinidade com pós-treino imediato).
+   * Cafeterias, empórios naturais e padarias artesanais (demanda por opções "Grab & Go" prontas na garrafa).
+   * Lojas de suplementos alimentares e clínicas de estética/nutrição.
+B. Arquitetura de Interação e UI/UX (Landing Page B2B Simplificada)
+19. Posicionamento Discreto na Navegação:
+   * Link minimalista na barra de navegação superior (estilo link-subtle) e botão evidente no rodapé.
+20. Apresentação de Margem e Giro:
+   * Destaque em 3 métricas diretas:
+      * Margem de Lucro Sugerida: 35% a 50% por garrafa.
+      * Shelf Life / Validade Segura: Até 90 dias congelado com zero perda de produto.
+      * Praticidade Operacional: Zero preparo ou manipulação no balcão (produto selado pronto para venda).
+21. Formulário de Pré-Cadastro em 4 Campos (Zero Fricção):
+   * Nome do Responsável & Telefone/WhatsApp.
+   * Razão Social / Nome Fantasia & CNPJ (com opção de "Estou abrindo / Não possuo CNPJ ainda").
+   * Segmento do Negócio: Dropdown simples (Academia/CrossFit, Cafeteria/Restaurante, Empório/Mercado, Outros).
+   * Estimativa de Consumo Semanal: Ex: 30 a 50 garrafas, 50 a 100 garrafas, Acima de 100 garrafas.
+C. Lógica Comercial e Benefícios para o Parceiro
+* Tabela de Preços Escalonada por Grade de Fardos:
+   * Faixa 1 (Pedido Mínimo de Teste): 24 a 48 garrafas (desconto de entrada no atacado).
+   * Faixa 2 (Giro Médio): 60 a 120 garrafas (condição especial + material gráfico de balcão).
+   * Faixa 3 (Distribuição/Redes): Acima de 150 garrafas (tabela máxima de atacado com reposição programada).
+* Kit de Apoio ao Ponto de Venda (Trade Marketing):
+   * Fornecimento de display térmico de balcão ou adesivagem de frigobar para revendedores com volume contínuo.
+   * Materiais gráficos de divulgação inclusos (displays de acrílico com QR Code e tabela nutricional clean label).
+D. Especificações Técnicas de Frontend e Integração
+* Roteamento Imediato para WhatsApp Comercial:
+   * Ao submeter o formulário de 4 campos, os dados geram automaticamente uma mensagem estruturada no WhatsApp da equipe comercial com o disparo simultâneo de um link ou PDF da Tabela Oficial de Atacado em formato limpo.
+* Validação Rápida Client-Side:
+   * Máscara automática de CNPJ e telefone/WhatsApp, com validação instantânea sem recarregamento de página.
+3.3 Checkout Rápido Direcionado para WhatsApp (One-Click Order via WhatsApp API)
+A. Benchmarks e Redução Radical de Fricção (Conversão Sem Cadastro)
+* Eliminação de Barreiras de Entrada: Em e-commerces convencionais, mais de 70% dos carrinhos são abandonados na etapa de criação de conta e digitação de senha. No mercado brasileiro de alimentação e delivery local, o fechamento via WhatsApp gera taxas de conversão substancialmente maiores pela familiaridade e agilidade do canal.
+* Fluxo "Headless WhatsApp": A interface do site funciona como um catálogo interativo de alta precisão (calculando volumes, descontos e frete), enquanto o WhatsApp atua como a camada de fechamento humano, confirmação de Pix e suporte direto.
+B. Mecânica e Arquitetura de Interação do Checkout (UX Flow)
+22. Gatilho de Finalização no Carrinho / Modal de Resumo:
+   * Botão principal em destaque verde/alto contraste: [ Finalizar Pedido no WhatsApp ].
+   * Texto de apoio (Microcopy): "Seu pedido será formatado automaticamente. Sem necessidade de cadastrar senha."
+23. Campos Mínimos Pré-WhatsApp (Coleta Rápida na Interface):
+   * Nome do Cliente
+   * Endereço / Bairro para entrega ou Ponto de Retirada Parceiro
+   * Forma de Pagamento Pretendida: Pix (com chave automática enviada na conversa), Cartão na Entrega ou Dinheiro.
+24. Geração do Link Dinâmico (api.whatsapp.com ou wa.me):
+   * Os dados estruturados do carrinho são encodados via encodeURIComponent() e anexados ao link oficial de atendimento.
+C. Estrutura Padrão da Mensagem Gerada (Template Limpo e Escaneável)
+A mensagem chega ao atendente/sistema perfeitamente formatada com quebras de linha e separadores limpos:
+🍇 *NOVO PEDIDO - AÇAÍ NA GARRAFA*
+----------------------------------------
+📦 *Pack Selecionado:* Kit Semanal (6 garrafas de 500ml)
+• 3x Tradicional (Banana & Morango)
+• 2x Zero Açúcar / Clean Label
+• 1x Proteico (Whey + Pasta de Amendoim)
+
+
+💰 *Resumo Financeiro:*
+• Subtotal: R$ 90,00
+• Desconto de Kit (7% OFF): -R$ 6,30
+• Frete Térmico (Centro): R$ 5,00
+👉 *TOTAL A PAGAR: R$ 88,70*
+
+
+📍 *Dados para Envio Térmico:*
+• Cliente: João Silva
+• Endereço: Rua Exemplo, nº 123 - Centro
+• Ponto de Referência: Próximo à praça principal
+• Pagamento: Pix (aguardando chave/QR Code)
+
+
+❄️ *Aviso:* Pedido embalado em bolsa térmica com gelo reciclável.
+----------------------------------------
+D. Especificações Técnicas de Implementação Frontend
+* Função de Serialização do Pedido (JavaScript/TypeScript):
+   * Criação de uma função utilitária generateWhatsAppMessage(cartState, customerInfo) que percorre o array de itens, aplica regras de cupom/desconto e formata a string com emojis e caracteres markdown nativos do WhatsApp (* para negrito, _ para itálico).
+* Tratamento de Strings e Codificação URI:
+   * Uso obrigatório de encodeURIComponent(message) para evitar quebras por caracteres especiais (&, %, +, acentuação e quebras de linha \n).
+* Fallback para Desktop vs. Mobile:
+   * No mobile, abertura nativa do aplicativo via esquema whatsapp://send?phone=...&text=....
+   * No desktop/web, redirecionamento automático para https://web.whatsapp.com/send?phone=...&text=... ou https://wa.me/....
+* Disparo de Evento de Conversão (Analytics):
+   * Inclusão de evento de disparo PurchaseIntent ou Lead para mensuração precisa de métricas no Google Analytics / Meta Pixel antes do redirecionamento.
+3.3 Checkout Rápido Direcionado para WhatsApp (One-Click WhatsApp Order)
+A. Benchmarks de Mercado e Otimização de Fricção no Food Delivery Local
+* Eliminação de Barreiras de Cadastro: No varejo alimentar direto ao consumidor (D2C) e delivery local de alimentos refrigerados, formulários extensos com criação de senha geram altas taxas de abandono de carrinho. A transição fluida do carrinho web direto para o WhatsApp converte até 3x mais ao aproveitar um canal onde o cliente já está conectado e habituado.
+* Validação Operacional Ágil: O atendente ou bot comercial recebe o pedido perfeitamente estruturado, bastando enviar a chave Pix instantânea e acionar o motoboy com bag térmica, garantindo agilidade crítica para bebidas geladas.
+B. Mecânica e Arquitetura de Interação do Checkout (UX Flow)
+25. Revisão do Pack no Drawer / Modal Lateral:
+   * O cliente visualiza o resumo limpo da sua caixa ou pedido:
+      * Quantidade e tamanho das garrafas (ex: Pack com 6 garrafas de 500ml).
+      * Discriminação exata dos sabores escolhidos.
+      * Tipo de entrega selecionada (Expressa com bolsa térmica / Retirada em ponto parceiro).
+      * Valor total com descontos promocionais aplicados.
+26. Coleta Mínima de Dados Pré-Envio (Zero Fricção):
+   * Apenas 3 campos essenciais preenchidos na interface web antes do clique:
+      * Nome Completo.
+      * Endereço Completo com Ponto de Referência (ou seleção do Ponto de Retirada Parceiro).
+      * Forma de Pagamento Pretendida: Pix, Cartão na Entrega ou Dinheiro (com campo de troco).
+27. Disparo do Botão de Ação Única:
+   * Botão destacado de alto contraste: [Finalizar Pedido via WhatsApp ➔].
+C. Estrutura e Formatação da Mensagem Automatizada (Template do Payload)
+A mensagem gerada via URL codificada (https://wa.me/NUMERO?text=MENSAGEM_FORMATADA) deve chegar ao balcão padronizada, legível e visualmente limpa:
+🍇 *NOVO PEDIDO - AÇAÍ NA GARRAFA* 🍇
+-----------------------------------
+📦 *PRODUTO:* Pack 6 Unidades (500ml)
+• 3x Tradicional com Banana
+• 2x Zero Açúcar / Clean Label
+• 1x Proteico com Whey
+
+
+🛵 *MÉTODO DE ENVIO:* Entrega Térmica Expressa
+📍 *ENDEREÇO:* Rua Exemplo, 123 - Centro (Ref: Próximo à Praça)
+👤 *CLIENTE:* Marcos Santos
+
+
+💰 *RESUMO FINANCEIRO:*
+• Subtotal: R$ 90,00
+• Desconto Pack (7%): -R$ 6,30
+• Taxa de Entrega Térmica: R$ 5,00
+👉 *TOTAL A PAGAR: R$ 88,70*
+💳 *FORMA DE PAGAMENTO:* Pix
+
+
+-----------------------------------
+_Pedido gerado automaticamente pelo site._
+D. Especificações Técnicas de Implementação Web (Frontend & JavaScript)
+* Serialização e Codificação de URL:
+   * Função utilitária no JavaScript/TypeScript para construir a string concatenada com quebras de linha (\n) e formatação Markdown aceita nativamente pelo WhatsApp (*negrito*, _itálico_).
+   * Uso obrigatório de encodeURIComponent(mensagemFormatada) para sanitizar espaços, acentos e caracteres especiais no link https://api.whatsapp.com/send?phone=${TELEFONE}&text=${payload}.
+* Persistência Temporária Local:
+   * Gravação do último pedido e dos dados básicos do cliente (nome, endereço) em localStorage, permitindo que em visitas futuras o cliente refaça o pedido em menos de 10 segundos (Reordenar com 1 Clique).
+4. Arquitetura de Informação e Estrutura da Landing Page
+4.1 Estrutura Modular da Landing Page (Single-Page Minimalista)
+A. Hero Section (Primeira Impressão & Alta Conversão)
+* Direção de Arte e Visual: Fotografia em alta definição da garrafa com textura gelada (gotículas de condensação visíveis), iluminação de estúdio com foco central e fundo escuro em alto contraste para destacar a cor roxa densa do açaí puro.
+* Headline Direta: "Praticidade, energia real e a máxima pureza do açaí direto na garrafa."
+* Subheadline: "Sem xaropes industriais, batido fresco e entregue trincando de gelado na sua porta ou ponto de retirada."
+* Chamada para Ação Principal (CTA): Botão primário com alto contraste [Montar Meu Pack de Garrafas ➔], com scroll suave direto para o configurador interativo.
+* Badges de Confiança Imediatos: Micro-ícones abaixo do CTA: 100% Polpa Especial, Entrega Térmica Garantida, Livre de BPA.
+B. Vitrine "Conheça os Blends" (Catálogo Limpo)
+* Layout: Grid minimalista e responsivo apresentando as 4 formulações fundamentais da marca:
+   * Tradicional (Energia & Sabor): Batido com banana fresca e toque suave de guaraná natural.
+   * Zero Açúcar / Clean Label: Polpa pura grossa, água mineral/coco e adoçado naturalmente.
+   * High Protein (Atleta): Blend com Whey Protein isolado ou pasta de amendoim integral.
+   * Frutas & Refrescância: Blend funcional com morango fresco ou frutas vermelhas.
+* Seletor de Volume por Card: Alternância rápida entre volumes disponíveis (300ml, 500ml, 1 Litro), recalculando o preço unitário instantaneamente no próprio card.
+* Ação Rápida: Botão de inclusão direta nos slots do configurador de kits ou visualização da ficha nutricional clean label.
+C. Seção Didática: "Como Funciona a Logística Fria"
+* Objetivo: Eliminar a dúvida sobre a qualidade e consistência do açaí durante o transporte.
+* 3 Etapas Visuais (Infográfico Linear de Baixa Complexidade):
+   * 1. Batido Fresco e Selado: Produção com polpa especial tipo grosso, envasada e lacrada sob rigoroso controle de temperatura.
+   * 2. Rota Térmica Protegida: Envio local em bolsas térmicas com gelo reciclável ou rota programada de reposição.
+   * 3. Direto na Sua Geladeira ou Freezer: Pronto para consumo imediato estupidamente gelado ou conservação por até 90 dias congelado.
+D. Seção "Packs Promocionais & Desconto Progressivo"
+* Cards em Destaque:
+   * Pack Degustação (4 Garrafas): Ideal para experimentar os diferentes sabores da linha.
+   * Kit Semanal (6 Garrafas): 1 garrafa por dia útil com desconto no frete.
+   * Kit Família / Atleta (12 Garrafas): Máxima economia por litro com frete térmico gratuito.
+* Barra de Incentivo: Contador visual indicando a economia em reais ao avançar de faixa.
+E. Rodapé Operacional & Contato Direto (Zero Poluição)
+* Informações Práticas de Entrega:
+   * Horários e turnos de saída das entregas térmicas diárias.
+   * Bairros atendidos e pontos parceiros de retirada gratuita (Click & Collect).
+* Canais Oficiais: Botão direto para o WhatsApp Comercial, chave Pix oficial da empresa e perfil no Instagram.
+* Dados Fiscais & Institucionais: CNPJ, selo de reciclagem e declaração de segurança de alimentos.

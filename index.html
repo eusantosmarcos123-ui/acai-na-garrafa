@@ -1,0 +1,2176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Açaí da Garrafa | Pura Energia Gelada & Prática</title>
+  <!-- Google Fonts & Lucide Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --primary: #4A0E4E;
+      --primary-dark: #2B0530;
+      --primary-light: #6C1D72;
+      --accent: #00E599;
+      --accent-hover: #00C784;
+      --accent-glow: rgba(0, 229, 153, 0.35);
+      --purple-subtle: #F6EDF8;
+      --dark-bg: #120314;
+      --surface: #1E0722;
+      --surface-card: #280C2E;
+      --surface-border: #441A4E;
+      --text-main: #FFFFFF;
+      --text-muted: #B8A5BE;
+      --text-dim: #7E6685;
+      --warning: #FFB300;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-full: 9999px;
+      --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, .brand-font {
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Top Banner de Cold Chain */
+    .cold-chain-banner {
+      background: linear-gradient(90deg, #1f0823, #3a0a3e, #1f0823);
+      border-bottom: 1px solid var(--surface-border);
+      padding: 8px 15px;
+      font-size: 0.85rem;
+      text-align: center;
+      color: var(--accent);
+      font-weight: 600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .db-status-pill {
+      background: rgba(0, 229, 153, 0.15);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 2px 10px;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-left: 10px;
+    }
+
+    /* Header Nav */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(18, 3, 20, 0.92);
+      backdrop-filter: blur(14px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(68, 26, 78, 0.5);
+    }
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #FFF;
+      text-decoration: none;
+    }
+    .logo-badge {
+      background: linear-gradient(135deg, var(--accent), #0099ff);
+      color: #000;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+    .btn-nav {
+      background: var(--accent);
+      color: #052115;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .btn-nav:hover {
+      background: #33ffb5;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 18px var(--accent-glow);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      padding: 80px 0 100px;
+      background: radial-gradient(circle at 75% 30%, rgba(108, 29, 114, 0.35) 0%, transparent 60%);
+      overflow: hidden;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 60px;
+    }
+    .hero-content .tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 229, 153, 0.12);
+      border: 1px solid rgba(0, 229, 153, 0.3);
+      color: var(--accent);
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .hero-content h1 {
+      font-size: 3.4rem;
+      line-height: 1.12;
+      margin-bottom: 20px;
+      font-weight: 900;
+    }
+    .hero-content h1 span {
+      background: linear-gradient(135deg, #00E599 0%, #A370F7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-content p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      max-width: 540px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #042517;
+      font-weight: 800;
+      padding: 16px 32px;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      font-size: 1.05rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+    .btn-primary:hover {
+      background: #28ffb0;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0, 229, 153, 0.5);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #FFF;
+      font-weight: 600;
+      padding: 16px 28px;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--surface-border);
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--accent);
+    }
+    .trust-badges {
+      display: flex;
+      gap: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 24px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .trust-item i {
+      color: var(--accent);
+    }
+
+    /* Garrafa 3D Visual Mockup */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .bottle-stage {
+      position: relative;
+      width: 320px;
+      height: 440px;
+      background: linear-gradient(180deg, rgba(68, 26, 78, 0.6) 0%, rgba(30, 7, 34, 0.95) 100%);
+      border-radius: 40px;
+      border: 1px solid rgba(0, 229, 153, 0.3);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), inset 0 0 40px rgba(74, 14, 78, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 20px;
+    }
+    .bottle-cap {
+      width: 80px;
+      height: 32px;
+      background: #111;
+      border-radius: 8px 8px 2px 2px;
+      border: 2px solid #555;
+      box-shadow: inset 0 2px 5px rgba(255,255,255,0.2);
+    }
+    .bottle-neck {
+      width: 60px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.05);
+      border-left: 2px solid rgba(255,255,255,0.2);
+      border-right: 2px solid rgba(255,255,255,0.2);
+    }
+    .bottle-body {
+      width: 170px;
+      height: 270px;
+      background: linear-gradient(135deg, #240026 0%, #3e0442 50%, #150017 100%);
+      border-radius: 20px 20px 30px 30px;
+      position: relative;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      box-shadow: inset 0 0 35px rgba(0,0,0,0.8), 0 15px 30px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .bottle-condensation {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 1px, transparent 2px),
+                  radial-gradient(circle at 70% 60%, rgba(255,255,255,0.25) 1.5px, transparent 2.5px),
+                  radial-gradient(circle at 40% 80%, rgba(255,255,255,0.2) 1px, transparent 2px);
+      background-size: 24px 24px;
+      opacity: 0.7;
+    }
+    .bottle-label {
+      z-index: 2;
+      background: rgba(18, 3, 20, 0.95);
+      border: 1px solid var(--accent);
+      padding: 14px 18px;
+      border-radius: 12px;
+      text-align: center;
+      width: 82%;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    }
+    .bottle-label h4 {
+      color: #FFF;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .bottle-label span {
+      display: block;
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-top: 3px;
+    }
+    .temp-floating-tag {
+      position: absolute;
+      bottom: 25px;
+      right: -15px;
+      background: #00E599;
+      color: #062b1a;
+      padding: 10px 16px;
+      border-radius: var(--radius-md);
+      font-weight: 800;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 10px 25px rgba(0, 229, 153, 0.4);
+      animation: float 3s ease-in-out infinite;
+    }
+    .bpa-floating-tag {
+      position: absolute;
+      top: 35px;
+      left: -15px;
+      background: rgba(40, 12, 46, 0.95);
+      border: 1px solid var(--surface-border);
+      color: #FFF;
+      padding: 8px 14px;
+      border-radius: var(--radius-md);
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* Section Headers */
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .section-title .pill {
+      display: inline-block;
+      background: rgba(108, 29, 114, 0.4);
+      border: 1px solid var(--primary-light);
+      color: #df9eff;
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+    .section-title h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+    .section-title p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* FILTER BAR (Momentos de Consumo / Objetivos) */
+    .filter-section {
+      padding: 30px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .filters-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      color: var(--text-muted);
+      padding: 10px 22px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .filter-btn:hover {
+      border-color: var(--accent);
+      color: #FFF;
+    }
+    .filter-btn.active {
+      background: var(--accent);
+      color: #062b1a;
+      border-color: var(--accent);
+      font-weight: 800;
+      box-shadow: 0 4px 15px var(--accent-glow);
+    }
+
+    /* Vitrine de Produtos (Clean Label Cards) */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 26px;
+      margin-top: 40px;
+    }
+    .product-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0, 229, 153, 0.4);
+      box-shadow: var(--shadow-card);
+    }
+    .card-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(0, 229, 153, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(0, 229, 153, 0.3);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .product-visual-preview {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .mini-bottle {
+      width: 70px;
+      height: 140px;
+      background: linear-gradient(135deg, #18001a, #3e0642);
+      border-radius: 14px 14px 20px 20px;
+      border: 2px solid rgba(255,255,255,0.25);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+    }
+    .mini-bottle::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      width: 32px;
+      height: 12px;
+      background: #111;
+      border-radius: 4px 4px 0 0;
+      border: 1px solid #444;
+    }
+    .mini-bottle-label {
+      width: 80%;
+      height: 48px;
+      background: rgba(10, 0, 12, 0.95);
+      border-left: 3px solid var(--accent);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-align: center;
+      padding: 2px;
+      color: #FFF;
+    }
+    .product-info h3 {
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+    }
+    .product-subtitle {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+      min-height: 40px;
+    }
+    /* Nutrition Strip */
+    .nutrition-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: var(--radius-sm);
+      padding: 10px 6px;
+      margin-bottom: 18px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .nutrition-item strong {
+      display: block;
+      font-size: 0.95rem;
+      color: #FFF;
+    }
+    .nutrition-item span {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    /* Size Selector Toggle */
+    .size-selector {
+      display: flex;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-sm);
+      padding: 4px;
+      margin-bottom: 18px;
+      gap: 4px;
+    }
+    .size-btn {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 6px 0;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .size-btn.active {
+      background: var(--primary-light);
+      color: #FFF;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .product-card-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .price-tag {
+      display: flex;
+      flex-direction: column;
+    }
+    .price-tag .currency {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .price-tag .amount {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #FFF;
+      font-family: 'Outfit', sans-serif;
+    }
+    .btn-add-slot {
+      background: rgba(0, 229, 153, 0.15);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 10px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-add-slot:hover {
+      background: var(--accent);
+      color: #062b1a;
+    }
+
+    /* CONFIGURADOR DE BOX (Build Your Box) */
+    .builder-section {
+      padding: 90px 0;
+      background: linear-gradient(180deg, var(--dark-bg) 0%, #17041a 50%, var(--dark-bg) 100%);
+      position: relative;
+    }
+    .builder-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    /* Steps Selector */
+    .pack-type-selector {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 20px 0 35px;
+    }
+    .pack-card {
+      background: var(--surface-card);
+      border: 2px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .pack-card:hover {
+      border-color: rgba(0, 229, 153, 0.5);
+    }
+    .pack-card.active {
+      border-color: var(--accent);
+      background: rgba(0, 229, 153, 0.05);
+      box-shadow: 0 0 20px rgba(0, 229, 153, 0.15);
+    }
+    .pack-badge-offer {
+      position: absolute;
+      top: -10px;
+      right: 14px;
+      background: var(--accent);
+      color: #062b1a;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+    }
+    .pack-card h4 {
+      font-size: 1.15rem;
+      margin-bottom: 4px;
+    }
+    .pack-card p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .pack-card .pack-price-hint {
+      margin-top: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #FFF;
+    }
+
+    /* Progress & Slots Visualizer */
+    .slots-visualizer {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px dashed var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 30px;
+    }
+    .slots-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .slots-title {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .slots-counter {
+      font-size: 0.9rem;
+      color: var(--accent);
+      font-weight: 800;
+    }
+    .progress-bar-bg {
+      background: rgba(255, 255, 255, 0.1);
+      height: 10px;
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #00E599, #00B4D8);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    .incentive-alert {
+      background: rgba(255, 179, 0, 0.12);
+      border-left: 3px solid var(--warning);
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: #ffd270;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .slots-container {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+    .slot-item {
+      flex: 0 0 90px;
+      height: 120px;
+      border-radius: 12px;
+      border: 2px dashed rgba(255, 255, 255, 0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      position: relative;
+      background: rgba(255, 255, 255, 0.02);
+      transition: all 0.2s;
+    }
+    .slot-item.filled {
+      border-style: solid;
+      border-color: var(--accent);
+      background: rgba(0, 229, 153, 0.08);
+      color: #FFF;
+    }
+    .slot-item .slot-remove {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: #ff4757;
+      color: #FFF;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.7rem;
+      border: none;
+    }
+
+    /* Flavors Incrementor in Builder */
+    .builder-flavors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 35px;
+    }
+    .flavor-pick-row {
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .flavor-meta h5 {
+      font-size: 0.95rem;
+      margin-bottom: 2px;
+    }
+    .flavor-meta span {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .qty-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--surface-border);
+      color: #FFF;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .qty-btn:hover:not(:disabled) {
+      background: var(--accent);
+      color: #062b1a;
+      border-color: var(--accent);
+    }
+    .qty-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    .qty-display {
+      font-weight: 800;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    /* Checkout & Summary Floating/Inline */
+    .builder-summary {
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .summary-prices .subtotal {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .summary-prices .total-val {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #FFF;
+      font-family: 'Outfit', sans-serif;
+    }
+    .summary-prices .discount-pill {
+      display: inline-block;
+      background: rgba(0, 229, 153, 0.15);
+      color: var(--accent);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-left: 8px;
+    }
+
+    /* COLD CHAIN LOGÍSTICA EXPLICADA */
+    .cold-chain-section {
+      padding: 80px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .cold-step {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-lg);
+      padding: 30px 24px;
+      text-align: center;
+      position: relative;
+    }
+    .step-number {
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #062b1a;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+    .step-icon-wrap {
+      width: 70px;
+      height: 70px;
+      border-radius: 20px;
+      background: rgba(108, 29, 114, 0.3);
+      border: 1px solid var(--primary-light);
+      margin: 10px auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+    }
+    .cold-step h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    .cold-step p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* SIMULADOR DE FRETE E PONTOS DE RETIRADA */
+    .shipping-section {
+      padding: 70px 0;
+      background: var(--surface);
+      border-top: 1px solid var(--surface-border);
+      border-bottom: 1px solid var(--surface-border);
+    }
+    .shipping-box {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+    }
+    .shipping-form {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .shipping-input {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      color: #FFF;
+      font-size: 0.95rem;
+      outline: none;
+    }
+    .shipping-input:focus {
+      border-color: var(--accent);
+    }
+    .btn-calc-frete {
+      background: var(--accent);
+      color: #062b1a;
+      border: none;
+      font-weight: 700;
+      padding: 0 24px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .shipping-results {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .shipping-option {
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.02);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .shipping-option.highlight {
+      border-color: var(--accent);
+      background: rgba(0, 229, 153, 0.05);
+    }
+    .opt-info h5 {
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+    .opt-info span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .opt-price {
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--accent);
+    }
+
+    /* MODAL DE CHECKOUT WHATSAPP (One-Click WhatsApp Order) */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.open {
+      display: flex;
+    }
+    .modal-window {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-lg);
+      max-width: 550px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 30px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .modal-header {
+      margin-bottom: 24px;
+    }
+    .modal-header h3 {
+      font-size: 1.5rem;
+      margin-bottom: 6px;
+      color: #FFF;
+    }
+    .modal-header p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--text-muted);
+    }
+    .form-control {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      color: #FFF;
+      font-size: 0.9rem;
+      outline: none;
+    }
+    .form-control:focus {
+      border-color: var(--accent);
+    }
+    .order-preview-box {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      margin-bottom: 20px;
+      font-size: 0.85rem;
+    }
+    .order-preview-box pre {
+      white-space: pre-wrap;
+      font-family: monospace;
+      color: #7df0bd;
+      line-height: 1.4;
+    }
+    .btn-whatsapp-send {
+      background: #25D366;
+      color: #032712;
+      font-weight: 800;
+      font-size: 1rem;
+      width: 100%;
+      padding: 16px;
+      border-radius: var(--radius-full);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.2s;
+    }
+    .btn-whatsapp-send:hover {
+      background: #1ebc59;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    }
+
+    /* Rodapé */
+    footer {
+      background: #0d010e;
+      border-top: 1px solid var(--surface-border);
+      padding: 60px 0 30px;
+      font-size: 0.9rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-col h5 {
+      font-size: 1rem;
+      margin-bottom: 16px;
+      color: #FFF;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+    .footer-col ul li a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover {
+      color: var(--accent);
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 25px;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.8rem;
+    }
+
+    /* Responsividade */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+      }
+      .hero-content p {
+        margin: 0 auto 30px;
+      }
+      .hero-actions {
+        justify-content: center;
+      }
+      .trust-badges {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .pack-type-selector {
+        grid-template-columns: 1fr;
+      }
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+      .shipping-results {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 600px) {
+      .nav-links {
+        display: none;
+      }
+      .hero-content h1 {
+        font-size: 2.4rem;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Banner Cold Chain -->
+  <div class="cold-chain-banner">
+    <i data-lucide="snowflake" style="width: 16px; height: 16px;"></i>
+    <span>LOGÍSTICA TÉRMICA DIRETA: Entregue congelado a -4°C em bolsas isotérmicas seladas</span>
+    <span class="db-status-pill"><i data-lucide="database" style="width: 12px; height: 12px;"></i> SQLite Conectado</span>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-inner">
+      <a href="#" class="logo">
+        <span>🍇 AÇAÍ NA GARRAFA</span>
+        <span class="logo-badge">Puro & Gelado</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#vitrine">Blends</a></li>
+        <li><a href="#configurador">Montar Pack</a></li>
+        <li><a href="#logistica">Como Chega Gelado?</a></li>
+        <li><a href="#frete">Simular Frete</a></li>
+        <li><a href="#revenda" style="color: #df9eff;">Seja Revendedor B2B</a></li>
+      </ul>
+      <a href="#configurador" class="btn-nav">
+        <i data-lucide="shopping-bag" style="width: 18px; height: 18px;"></i>
+        <span>Montar Kit</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="tagline">
+          <i data-lucide="zap" style="width: 16px; height: 16px;"></i>
+          <span>Açaí Especial D2C | Sem Xarope Industrial</span>
+        </div>
+        <h1>Praticidade, energia real e a máxima pureza do <span>açaí na garrafa.</span></h1>
+        <p>Batido fresco da fruta, livre de conservantes químicos e envasado em garrafas ergonômicas prontas para beber ou levar no treino. Chega trincando de gelado na sua porta.</p>
+        
+        <div class="hero-actions">
+          <a href="#configurador" class="btn-primary">
+            <span>Montar Meu Pack Personalizado</span>
+            <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+          </a>
+          <a href="#vitrine" class="btn-secondary">
+            <i data-lucide="sparkles" style="width: 18px; height: 18px;"></i>
+            <span>Ver os 4 Blends</span>
+          </a>
+        </div>
+
+        <div class="trust-badges">
+          <div class="trust-item">
+            <i data-lucide="check-circle" style="width: 18px; height: 18px;"></i>
+            <span>100% Polpa Especial</span>
+          </div>
+          <div class="trust-item">
+            <i data-lucide="shield-check" style="width: 18px; height: 18px;"></i>
+            <span>Embalagem Livre de BPA</span>
+          </div>
+          <div class="trust-item">
+            <i data-lucide="thermometer-snowflake" style="width: 18px; height: 18px;"></i>
+            <span>Cadeia Fria Garantida</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero 3D Visual Bottle Simulation -->
+      <div class="hero-visual">
+        <div class="bottle-stage">
+          <div class="bpa-floating-tag">
+            <i data-lucide="leaf" style="width: 14px; height: 14px; color: var(--accent);"></i>
+            Clean Label (Sem aditivos)
+          </div>
+
+          <div class="bottle-cap"></div>
+          <div class="bottle-neck"></div>
+          <div class="bottle-body">
+            <div class="bottle-condensation"></div>
+            <div class="bottle-label">
+              <h4>AÇAÍ PURO</h4>
+              <span>GARRAFA 500ML</span>
+              <p style="font-size: 0.6rem; color: #aaa; margin-top: 4px;">POLPA MÉDIA-GROSSA EXTRAÍDA A FRIO</p>
+            </div>
+          </div>
+
+          <div class="temp-floating-tag">
+            <i data-lucide="snowflake" style="width: 18px; height: 18px;"></i>
+            <span>Trincando a -2°C</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filtro por Momento de Consumo / Objetivo -->
+  <section class="filter-section" id="vitrine">
+    <div class="container">
+      <div class="section-title">
+        <span class="pill">Navegação por Objetivo</span>
+        <h2>Escolha pelo seu Momento do Dia</h2>
+        <p>Não é só açaí. É a nutrição exata para cada objetivo: mais energia, treino pesado ou lanche refrescante sem culpa.</p>
+      </div>
+
+      <div class="filters-wrapper">
+        <button class="filter-btn active" onclick="filterCategory('all', this)">
+          <i data-lucide="grid" style="width: 16px; height: 16px;"></i> Todos os Blends
+        </button>
+        <button class="filter-btn" onclick="filterCategory('treino', this)">
+          <i data-lucide="dumbbell" style="width: 16px; height: 16px;"></i> ⚡ Pré/Pós-Treino (High Protein)
+        </button>
+        <button class="filter-btn" onclick="filterCategory('zero', this)">
+          <i data-lucide="feather" style="width: 16px; height: 16px;"></i> 🍃 Zero Açúcar (Clean Label)
+        </button>
+        <button class="filter-btn" onclick="filterCategory('casual', this)">
+          <i data-lucide="smile" style="width: 16px; height: 16px;"></i> 🍓 Lanche & Refrescância
+        </button>
+      </div>
+
+      <!-- Vitrine Grid de Blends (Carregados via API SQLite) -->
+      <div class="products-grid" id="productGrid">
+        <!-- Renderizado dinamicamente via SQLite /api/produtos -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CONFIGURADOR INTERATIVO (BUILD YOUR BOX) -->
+  <section class="builder-section" id="configurador">
+    <div class="container">
+      <div class="section-title">
+        <span class="pill">Configurador Interativo</span>
+        <h2>Monte Seu Pack de Garrafas ("Build Your Box")</h2>
+        <p>Escolha o tamanho do kit, selecione seus blends favoritos garrafa por garrafa e desbloqueie descontos progressivos automáticos.</p>
+      </div>
+
+      <div class="builder-card">
+        <!-- Passo 1: Tamanho da Caixa -->
+        <div class="step-badge">
+          <i data-lucide="check-circle-2" style="width: 18px; height: 18px;"></i>
+          <span>PASSO 1: Escolha a Capacidade do seu Pack</span>
+        </div>
+
+        <div class="pack-type-selector">
+          <div class="pack-card" onclick="selectPackSize(4, 0, this)">
+            <h4>Pack Degustação</h4>
+            <p>4 Garrafas (Experimentar Sabores)</p>
+            <div class="pack-price-hint">Preço Base Unitário</div>
+          </div>
+
+          <div class="pack-card active" onclick="selectPackSize(6, 7, this)">
+            <span class="pack-badge-offer">7% OFF + Popular</span>
+            <h4>Kit Semanal</h4>
+            <p>6 Garrafas (1 garrafa por dia útil)</p>
+            <div class="pack-price-hint">7% de Desconto Real</div>
+          </div>
+
+          <div class="pack-card" onclick="selectPackSize(12, 15, this)">
+            <span class="pack-badge-offer" style="background:#00B4D8; color:#fff;">15% OFF + Frete Grátis</span>
+            <h4>Kit Atleta / Família</h4>
+            <p>12 Garrafas (Estoque Gelado)</p>
+            <div class="pack-price-hint">15% OFF + Frete Térmico Free</div>
+          </div>
+        </div>
+
+        <!-- Passo 2: Slots e Progresso -->
+        <div class="slots-visualizer">
+          <div class="slots-header">
+            <span class="slots-title">Garrafas Selecionadas na Caixa</span>
+            <span class="slots-counter" id="slotCounterText">0 de 6 garrafas</span>
+          </div>
+
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progressBarFill"></div>
+          </div>
+
+          <div class="incentive-alert" id="incentiveAlert">
+            <i data-lucide="tag" style="width: 16px; height: 16px;"></i>
+            <span id="incentiveText">Adicione 6 garrafas para preencher o Kit Semanal com 7% de desconto!</span>
+          </div>
+
+          <!-- Slots Visuais -->
+          <div class="slots-container" id="slotsDisplay">
+            <!-- Gerado via JavaScript -->
+          </div>
+        </div>
+
+        <!-- Passo 3: Distribuição Livre de Sabores -->
+        <div class="step-badge">
+          <i data-lucide="sliders" style="width: 18px; height: 18px;"></i>
+          <span>PASSO 2: Distribua os Sabores no seu Pack</span>
+        </div>
+
+        <div class="builder-flavors-grid" id="builderFlavorsGrid">
+          <!-- Gerado dinamicamente via SQLite -->
+        </div>
+
+        <!-- Resumo & Botão Final -->
+        <div class="builder-summary">
+          <div class="summary-prices">
+            <div class="subtotal">
+              Subtotal: <span id="summarySubtotal">R$ 0,00</span>
+              <span class="discount-pill" id="summaryDiscountPill">0% OFF</span>
+            </div>
+            <div class="total-val" id="summaryTotal">R$ 0,00</div>
+          </div>
+
+          <button class="btn-primary" id="btnFinalizeBox" disabled onclick="openCheckoutModal()" style="opacity: 0.5; cursor: not-allowed;">
+            <i data-lucide="check" style="width: 20px; height: 20px;"></i>
+            <span id="btnFinalizeText">Complete 6 Garrafas para Avançar</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGÍSTICA TÉRMICA COLD-CHAIN -->
+  <section class="cold-chain-section" id="logistica">
+    <div class="container">
+      <div class="section-title">
+        <span class="pill">Cadeia do Frio Garantida</span>
+        <h2>Como o Açaí Chega Trincando na sua Porta?</h2>
+        <p>Eliminamos qualquer risco de derretimento. Da esteira de envase até a sua geladeira em bolsa isotérmica lacrada.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="cold-step">
+          <div class="step-number">1</div>
+          <div class="step-icon-wrap">
+            <i data-lucide="snowflake" style="width: 32px; height: 32px;"></i>
+          </div>
+          <h3>Batido e Ultracongelado</h3>
+          <p>Polpa especial grossa batida a fresco e submetida a choque térmico imediato para preservar nutrientes, sabor e textura pastosa.</p>
+        </div>
+
+        <div class="cold-step">
+          <div class="step-number">2</div>
+          <div class="step-icon-wrap">
+            <i data-lucide="package-check" style="width: 32px; height: 32px;"></i>
+          </div>
+          <h3>Embalagem Isotérmica</h3>
+          <p>Seu pack é acondicionado em caixas térmicas com bolsas de gelo reciclável, mantendo a temperatura abaixo de 0°C por até 5 horas em rota.</p>
+        </div>
+
+        <div class="cold-step">
+          <div class="step-number">3</div>
+          <div class="step-icon-wrap">
+            <i data-lucide="refrigerator" style="width: 32px; height: 32px;"></i>
+          </div>
+          <h3>Pronto para o Consumo</h3>
+          <p>Beba na hora estupidamente gelado ou guarde no congelador por até 90 dias sem perder nenhuma propriedade da fruta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIMULADOR DE FRETE E PONTOS DE RETIRADA -->
+  <section class="shipping-section" id="frete">
+    <div class="container">
+      <div class="shipping-box">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Simular Envio ou Retirada Térmica</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Consulte o prazo de entrega expressa na sua região ou escolha um ponto parceiro Click & Collect gratuito.</p>
+        </div>
+
+        <div class="shipping-form">
+          <input type="text" class="shipping-input" id="cepInput" placeholder="Digite seu CEP ou Bairro (Ex: 40000-000 ou Pituba)" value="41810-000">
+          <button class="btn-calc-frete" onclick="calculateShipping()">
+            <i data-lucide="search" style="width: 18px; height: 18px;"></i>
+            <span>Calcular Frete</span>
+          </button>
+        </div>
+
+        <div class="shipping-results" id="shippingResults">
+          <div class="shipping-option highlight">
+            <div class="opt-info">
+              <h5>🛵 Entrega Térmica Expressa</h5>
+              <span id="shippingTimeDesc">Chega hoje entre 40 e 60 minutos (Bolsa gelada)</span>
+            </div>
+            <div class="opt-price" id="shippingExpressPrice">R$ 5,00</div>
+          </div>
+
+          <div class="shipping-option">
+            <div class="opt-info">
+              <h5>📍 Click & Collect (Ponto Parceiro)</h5>
+              <span id="shippingCollectDesc">Retirada imediata no freezer da Academia SmartFit</span>
+            </div>
+            <div class="opt-price" style="color: #00E599;">GRÁTIS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CANAL DE REVENDA B2B & FOOD SERVICE -->
+  <section style="padding: 70px 0; background: linear-gradient(90deg, #18031d, #25062c);" id="revenda">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px;">
+      <div style="max-width: 600px;">
+        <span class="pill" style="background: rgba(0, 229, 153, 0.15); color: var(--accent); border-color: rgba(0,229,153,0.3);">Canal Corporativo & Food Service</span>
+        <h2 style="font-size: 2rem; margin-top: 10px; margin-bottom: 12px;">Tem Academia, Cafeteria ou Restaurante?</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Tenha um freezer consignado na sua loja e ofereça o melhor açaí engarrafado da cidade com margens de revenda de até 45% gravadas no SQLite.</p>
+      </div>
+      <div>
+        <button onclick="openB2BModal()" class="btn-primary" style="background: #FFF; color: #18031d; box-shadow: none;">
+          <i data-lucide="briefcase" style="width: 18px; height: 18px;"></i>
+          <span>Solicitar Tabela B2B / Revenda</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL DE CHECKOUT RÁPIDO WHATSAPP -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal-window">
+      <button class="modal-close" onclick="closeCheckoutModal()">
+        <i data-lucide="x" style="width: 22px; height: 22px;"></i>
+      </button>
+
+      <div class="modal-header">
+        <span class="logo-badge" style="background: #25D366; color: #022511; margin-bottom: 8px; display: inline-block;">Fechamento Rápido</span>
+        <h3>Finalizar Pedido via WhatsApp</h3>
+        <p>Preencha os dados de entrega. O pedido será <strong>registrado no banco SQLite</strong> e enviado formatado ao atendente.</p>
+      </div>
+
+      <div class="form-group">
+        <label>Seu Nome Completo:</label>
+        <input type="text" class="form-control" id="custName" placeholder="Ex: Marcos Santos" value="Marcos Santos">
+      </div>
+
+      <div class="form-group">
+        <label>WhatsApp / Telefone:</label>
+        <input type="text" class="form-control" id="custPhone" placeholder="Ex: (71) 99999-8888" value="(71) 99999-8888">
+      </div>
+
+      <div class="form-group">
+        <label>Endereço de Entrega (Rua, Número, Bairro e Referência):</label>
+        <input type="text" class="form-control" id="custAddress" placeholder="Ex: Av. Sete de Setembro, 500 - Apto 302" value="Av. ACM, 1200 - Pituba">
+      </div>
+
+      <div class="form-group">
+        <label>Forma de Pagamento:</label>
+        <select class="form-control" id="custPayment">
+          <option value="Pix (Chave Automática)">Pix (Aprovação Imediata)</option>
+          <option value="Cartão de Crédito / Débito na Entrega">Cartão na Maquininha (Entrega)</option>
+          <option value="Dinheiro">Dinheiro (Troco)</option>
+        </select>
+      </div>
+
+      <div class="order-preview-box">
+        <div style="font-weight: 700; color: #FFF; margin-bottom: 6px;">Visualização da Mensagem Gerada:</div>
+        <pre id="orderPreviewText">Calculando resumo do pedido...</pre>
+      </div>
+
+      <button class="btn-whatsapp-send" onclick="sendOrderToWhatsApp()">
+        <i data-lucide="message-circle" style="width: 22px; height: 22px;"></i>
+        <span>Gravar no SQLite e Enviar Pedido ➔</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL B2B / REVENDA -->
+  <div class="modal-overlay" id="b2bModal">
+    <div class="modal-window">
+      <button class="modal-close" onclick="closeB2BModal()">
+        <i data-lucide="x" style="width: 22px; height: 22px;"></i>
+      </button>
+
+      <div class="modal-header">
+        <span class="logo-badge" style="background: #00E599; color: #022511; margin-bottom: 8px; display: inline-block;">Revenda Corporativa</span>
+        <h3>Cadastro de Parceiro B2B</h3>
+        <p>Receba a tabela oficial com descontos para fardos acima de 24 unidades.</p>
+      </div>
+
+      <div class="form-group">
+        <label>Nome do Responsável:</label>
+        <input type="text" class="form-control" id="b2bName" placeholder="Ex: Carlos Eduardo">
+      </div>
+
+      <div class="form-group">
+        <label>WhatsApp Comercial:</label>
+        <input type="text" class="form-control" id="b2bPhone" placeholder="Ex: (71) 98888-7777">
+      </div>
+
+      <div class="form-group">
+        <label>Nome da Empresa / Academia / Cafeteria:</label>
+        <input type="text" class="form-control" id="b2bCompany" placeholder="Ex: Fit Club Salvador">
+      </div>
+
+      <div class="form-group">
+        <label>Previsão Semanal de Garrafas:</label>
+        <select class="form-control" id="b2bEst">
+          <option value="24 a 48 garrafas/semana">24 a 48 garrafas / semana (Kit Teste)</option>
+          <option value="50 a 100 garrafas/semana">50 a 100 garrafas / semana (Médio Giro)</option>
+          <option value="Acima de 100 garrafas/semana">Mais de 100 garrafas / semana (Grande Rede)</option>
+        </select>
+      </div>
+
+      <button class="btn-primary" style="width: 100%; justify-content: center;" onclick="submitB2BForm()">
+        <i data-lucide="send" style="width: 18px; height: 18px;"></i>
+        <span>Solicitar Tabela e Salvar</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo" style="margin-bottom: 14px;">
+            <span>🍇 AÇAÍ NA GARRAFA</span>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.85rem; max-width: 300px;">
+            A revolução do açaí artesanal: mais prático, saudável, sustentável e estupidamente gelado onde você estiver.
+          </p>
+          <div style="margin-top: 15px; color: var(--accent); font-size: 0.8rem; font-weight: 700;">
+            CNPJ: 00.000.000/0001-00 • Salvador - BA
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Navegação</h5>
+          <ul>
+            <li><a href="#vitrine">Blends de Açaí</a></li>
+            <li><a href="#configurador">Monte seu Pack</a></li>
+            <li><a href="#logistica">Cadeia Térmica</a></li>
+            <li><a href="#frete">Simular Frete</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Institucional</h5>
+          <ul>
+            <li><a href="#revenda">Canal Corporativo B2B</a></li>
+            <li><a href="#">Laudo e Tabela Nutricional</a></li>
+            <li><a href="#">Termos e Privacidade</a></li>
+            <li><a href="#">Política de Troca Fria</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Atendimento Local</h5>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 10px;">
+            Segunda a Sábado: 09h às 21h<br>
+            Domingos e Feriados: 11h às 19h
+          </p>
+          <a href="https://wa.me/5571999999999" target="_blank" style="color: var(--accent); font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 6px;">
+            <i data-lucide="phone-call" style="width: 16px; height: 16px;"></i>
+            (71) 99999-9999
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Açaí na Garrafa D2C. Backend Node.js & SQLite Integrados. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lógica Javascript Integrada com SQLite -->
+  <script>
+    // Inicializa Lucide Icons
+    lucide.createIcons();
+
+    // Estado da Aplicação
+    const state = {
+      targetPackSize: 6,
+      discountPercent: 7,
+      boxItems: [], // lista de sabores
+      productsList: [], // produtos vindos do SQLite
+      prices: {},
+      shippingCost: 5.00
+    };
+
+    // Preços por tamanho na vitrine
+    const sizePrices = {};
+
+    // 1. Carregar Produtos do Backend SQLite
+    async function loadProductsFromDB(category = 'all') {
+      try {
+        const resp = await fetch(`/api/produtos?categoria=${category}`);
+        if (!resp.ok) throw new Error('Falha na API');
+        const data = await resp.json();
+        state.productsList = data.produtos || [];
+        renderProductsGrid(state.productsList);
+        renderBuilderFlavors(state.productsList);
+      } catch (err) {
+        console.warn('Backend SQLite offline ou rodando estático. Usando dados locais de fallback.', err);
+        useFallbackData();
+      }
+    }
+
+    function useFallbackData() {
+      state.productsList = [
+        {
+          id: 1,
+          nome: 'Tradicional Cremoso',
+          categoria: 'casual',
+          descricao: 'Polpa especial batida com banana prata e toque suave de guaraná natural da Amazônia.',
+          destaque: 'Mais Pedido',
+          badge: 'Energia Pura',
+          kcal: 185, proteinas: 3.2, carbos: 32,
+          preco_300ml: 14.00, preco_500ml: 18.00, preco_1000ml: 32.00
+        },
+        {
+          id: 2,
+          nome: 'High Protein Turbo',
+          categoria: 'treino',
+          descricao: 'Blend potente com Whey Protein Isolado 100% puro e pasta de amendoim integral crocante.',
+          destaque: '25g Proteína',
+          badge: 'Performance',
+          kcal: 280, proteinas: 25.4, carbos: 26,
+          preco_300ml: 18.00, preco_500ml: 24.00, preco_1000ml: 42.00
+        },
+        {
+          id: 3,
+          nome: 'Zero Açúcar / Clean Label',
+          categoria: 'zero',
+          descricao: 'Polpa especial tipo grosso, batida apenas com água de coco natural. Adoçado com stevia pura.',
+          destaque: 'Zero Açúcar',
+          badge: 'Clean Label',
+          kcal: 115, proteinas: 2.4, carbos: 6.8,
+          preco_300ml: 16.00, preco_500ml: 20.00, preco_1000ml: 36.00
+        },
+        {
+          id: 4,
+          nome: 'Red Berries Fresh',
+          categoria: 'casual',
+          descricao: 'Açaí artesanal infusionado com morangos frescos e amoras silvestres. Refrescância pura.',
+          destaque: 'Antioxidante',
+          badge: 'Frutas Frescas',
+          kcal: 160, proteinas: 2.8, carbos: 28,
+          preco_300ml: 15.00, preco_500ml: 19.00, preco_1000ml: 34.00
+        }
+      ];
+      renderProductsGrid(state.productsList);
+      renderBuilderFlavors(state.productsList);
+    }
+
+    function renderProductsGrid(products) {
+      const grid = document.getElementById('productGrid');
+      grid.innerHTML = '';
+
+      products.forEach(p => {
+        state.prices[p.nome] = p.preco_500ml;
+        sizePrices[p.id] = { 300: p.preco_300ml, 500: p.preco_500ml, 1000: p.preco_1000ml };
+
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.setAttribute('data-category', p.categoria);
+
+        card.innerHTML = `
+          <span class="card-badge">${p.destaque || 'Blend Especial'}</span>
+          <div class="product-visual-preview">
+            <div class="mini-bottle">
+              <div class="mini-bottle-label">${p.nome.toUpperCase()}</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3>${p.nome}</h3>
+            <p class="product-subtitle">${p.descricao}</p>
+            
+            <div class="nutrition-strip">
+              <div class="nutrition-item">
+                <strong>${p.kcal}</strong>
+                <span>kcal</span>
+              </div>
+              <div class="nutrition-item">
+                <strong>${p.proteinas}g</strong>
+                <span>Proteínas</span>
+              </div>
+              <div class="nutrition-item">
+                <strong>${p.carbos}g</strong>
+                <span>Carbos</span>
+              </div>
+            </div>
+
+            <div class="size-selector" data-prod="${p.id}">
+              <button class="size-btn" onclick="selectBottleSize(${p.id}, 300, ${p.preco_300ml}, this)">300ml</button>
+              <button class="size-btn active" onclick="selectBottleSize(${p.id}, 500, ${p.preco_500ml}, this)">500ml</button>
+              <button class="size-btn" onclick="selectBottleSize(${p.id}, 1000, ${p.preco_1000ml}, this)">1 Litro</button>
+            </div>
+
+            <div class="product-card-bottom">
+              <div class="price-tag">
+                <span class="currency">Valor unitário (500ml)</span>
+                <span class="amount" id="price-val-${p.id}">R$ ${p.preco_500ml.toFixed(2).replace('.', ',')}</span>
+              </div>
+              <button class="btn-add-slot" onclick="addFlavorToBox('${p.nome}')">
+                <i data-lucide="plus" style="width: 16px; height: 16px;"></i>
+                <span>Add ao Pack</span>
+              </button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+      lucide.createIcons();
+    }
+
+    function renderBuilderFlavors(products) {
+      const container = document.getElementById('builderFlavorsGrid');
+      container.innerHTML = '';
+
+      products.forEach(p => {
+        const row = document.createElement('div');
+        row.className = 'flavor-pick-row';
+        row.innerHTML = `
+          <div class="flavor-meta">
+            <h5>${p.nome}</h5>
+            <span>R$ ${p.preco_500ml.toFixed(2).replace('.', ',')} / un (500ml)</span>
+          </div>
+          <div class="qty-controls">
+            <button class="qty-btn" onclick="changeFlavorQty('${p.nome}', -1)">-</button>
+            <span class="qty-display" id="qty-${p.nome}">0</span>
+            <button class="qty-btn" onclick="changeFlavorQty('${p.nome}', 1)">+</button>
+          </div>
+        `;
+        container.appendChild(row);
+      });
+      updateBuilderUI();
+    }
+
+    function selectBottleSize(prodId, size, price, btn) {
+      const container = btn.parentElement;
+      container.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const priceElem = document.getElementById(`price-val-${prodId}`);
+      if (priceElem) {
+        priceElem.textContent = `R$ ${price.toFixed(2).replace('.', ',')}`;
+      }
+    }
+
+    // Filtragem por Objetivo
+    function filterCategory(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      loadProductsFromDB(cat);
+    }
+
+    // Seleção de Tamanho do Pack
+    function selectPackSize(size, discount, card) {
+      document.querySelectorAll('.pack-card').forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+
+      state.targetPackSize = size;
+      state.discountPercent = discount;
+
+      // Se o tamanho novo for menor que o atual, fatia o excesso
+      if (state.boxItems.length > size) {
+        state.boxItems = state.boxItems.slice(0, size);
+      }
+
+      updateBuilderUI();
+    }
+
+    // Adicionar sabor diretamente pelo botão do catálogo
+    function addFlavorToBox(flavor) {
+      if (state.boxItems.length >= state.targetPackSize) {
+        alert(`Seu Pack já atingiu a capacidade máxima de ${state.targetPackSize} garrafas! Remova uma ou selecione um kit maior.`);
+        return;
+      }
+      state.boxItems.push(flavor);
+      updateBuilderUI();
+      // Leva suavemente até o configurador
+      document.getElementById('configurador').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Incrementar / Decrementar sabor
+    function changeFlavorQty(flavor, delta) {
+      if (delta > 0) {
+        if (state.boxItems.length >= state.targetPackSize) {
+          alert(`Capacidade do Pack (${state.targetPackSize} garrafas) atingida!`);
+          return;
+        }
+        state.boxItems.push(flavor);
+      } else {
+        const index = state.boxItems.lastIndexOf(flavor);
+        if (index !== -1) {
+          state.boxItems.splice(index, 1);
+        }
+      }
+      updateBuilderUI();
+    }
+
+    // Remover item de slot específico
+    function removeSlot(index) {
+      state.boxItems.splice(index, 1);
+      updateBuilderUI();
+    }
+
+    // Atualização Geral da Interface do Configurador
+    function updateBuilderUI() {
+      const totalSelected = state.boxItems.length;
+      const progressPercent = Math.min(100, (totalSelected / state.targetPackSize) * 100);
+
+      // Barra de Progresso
+      const progressFill = document.getElementById('progressBarFill');
+      if (progressFill) progressFill.style.width = `${progressPercent}%`;
+      const counterText = document.getElementById('slotCounterText');
+      if (counterText) counterText.textContent = `${totalSelected} de ${state.targetPackSize} garrafas`;
+
+      // Alerta de Incentivo
+      const missing = state.targetPackSize - totalSelected;
+      const alertElem = document.getElementById('incentiveAlert');
+      const textElem = document.getElementById('incentiveText');
+
+      if (alertElem && textElem) {
+        if (missing > 0) {
+          textElem.textContent = `Adicione mais ${missing} garrafa(s) para completar seu Kit de ${state.targetPackSize} un com ${state.discountPercent}% de desconto!`;
+          alertElem.style.display = 'flex';
+        } else {
+          textElem.textContent = `🎉 Perfeito! Seu Pack está completo com ${state.discountPercent}% de desconto aplicado!`;
+          alertElem.style.borderColor = 'var(--accent)';
+          alertElem.style.background = 'rgba(0, 229, 153, 0.15)';
+          alertElem.style.color = '#7df0bd';
+        }
+      }
+
+      // Renderizar Slots Visuais
+      const slotsContainer = document.getElementById('slotsDisplay');
+      if (slotsContainer) {
+        slotsContainer.innerHTML = '';
+        for (let i = 0; i < state.targetPackSize; i++) {
+          const item = state.boxItems[i];
+          const slot = document.createElement('div');
+          if (item) {
+            slot.className = 'slot-item filled';
+            slot.innerHTML = `
+              <i data-lucide="wine" style="width: 22px; height: 22px; margin-bottom: 6px; color: var(--accent);"></i>
+              <span style="font-weight: 700; text-align: center; font-size: 0.7rem; line-height: 1.1;">${item.split(' ')[0]}</span>
+              <button class="slot-remove" onclick="removeSlot(${i})">&times;</button>
+            `;
+          } else {
+            slot.className = 'slot-item';
+            slot.innerHTML = `
+              <i data-lucide="plus" style="width: 18px; height: 18px; margin-bottom: 4px; opacity: 0.4;"></i>
+              <span>Vazio ${i + 1}</span>
+            `;
+          }
+          slotsContainer.appendChild(slot);
+        }
+        lucide.createIcons();
+      }
+
+      // Atualizar contadores de cada sabor
+      const flavorCounts = {};
+      state.productsList.forEach(p => flavorCounts[p.nome] = 0);
+      state.boxItems.forEach(item => {
+        flavorCounts[item] = (flavorCounts[item] || 0) + 1;
+      });
+
+      for (const [flavor, count] of Object.entries(flavorCounts)) {
+        const display = document.getElementById(`qty-${flavor}`);
+        if (display) display.textContent = count;
+      }
+
+      // Calcular Subtotal e Total
+      let subtotal = 0;
+      state.boxItems.forEach(item => {
+        subtotal += state.prices[item] || 18.00;
+      });
+
+      const discountValue = subtotal * (state.discountPercent / 100);
+      const total = subtotal - discountValue;
+
+      const subElem = document.getElementById('summarySubtotal');
+      const discElem = document.getElementById('summaryDiscountPill');
+      const totElem = document.getElementById('summaryTotal');
+
+      if (subElem) subElem.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+      if (discElem) discElem.textContent = `${state.discountPercent}% OFF (-R$ ${discountValue.toFixed(2).replace('.', ',')})`;
+      if (totElem) totElem.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+
+      // Botão Finalizar
+      const btn = document.getElementById('btnFinalizeBox');
+      const btnText = document.getElementById('btnFinalizeText');
+
+      if (btn && btnText) {
+        if (totalSelected === state.targetPackSize) {
+          btn.disabled = false;
+          btn.style.opacity = '1';
+          btn.style.cursor = 'pointer';
+          btnText.textContent = `Avançar com Pack Completo (${state.targetPackSize} Garrafas) ➔`;
+        } else {
+          btn.disabled = true;
+          btn.style.opacity = '0.5';
+          btn.style.cursor = 'not-allowed';
+          btnText.textContent = `Complete ${state.targetPackSize} Garrafas para Avançar`;
+        }
+      }
+    }
+
+    // Modal de Checkout e Payload WhatsApp
+    function openCheckoutModal() {
+      updateOrderPreview();
+      document.getElementById('checkoutModal').classList.add('open');
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('checkoutModal').classList.remove('open');
+    }
+
+    function generateOrderData() {
+      const name = document.getElementById('custName').value || 'Cliente';
+      const phone = document.getElementById('custPhone').value || '';
+      const address = document.getElementById('custAddress').value || 'Endereço a combinar';
+      const payment = document.getElementById('custPayment').value;
+
+      const counts = {};
+      state.boxItems.forEach(item => {
+        counts[item] = (counts[item] || 0) + 1;
+      });
+
+      let subtotal = 0;
+      const itens = [];
+      let itemsListText = '';
+
+      for (const [flavor, qty] of Object.entries(counts)) {
+        const unit = state.prices[flavor] || 18.00;
+        const cost = unit * qty;
+        subtotal += cost;
+        itens.push({ nome: flavor, quantidade: qty, precoUnitario: unit });
+        itemsListText += `• ${qty}x ${flavor} (R$ ${cost.toFixed(2)})\n`;
+      }
+
+      const discountValue = subtotal * (state.discountPercent / 100);
+      const total = subtotal - discountValue + state.shippingCost;
+
+      const whatsappText = 
+`🍇 *NOVO PEDIDO - AÇAÍ NA GARRAFA* 🍇
+-----------------------------------
+📦 *PRODUTO:* Pack ${state.targetPackSize} Garrafas (500ml)
+${itemsListText}
+🛵 *MÉTODO DE ENVIO:* Entrega Térmica Expressa
+📍 *ENDEREÇO:* ${address}
+👤 *CLIENTE:* ${name}
+
+💰 *RESUMO FINANCEIRO:*
+• Subtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}
+• Desconto Pack (${state.discountPercent}%): -R$ ${discountValue.toFixed(2).replace('.', ',')}
+• Taxa Térmica: R$ ${state.shippingCost.toFixed(2).replace('.', ',')}
+👉 *TOTAL A PAGAR: R$ ${total.toFixed(2).replace('.', ',')}*
+💳 *FORMA DE PAGAMENTO:* ${payment}
+
+-----------------------------------
+_Pedido gravado no banco SQLite e gerado pelo site._`;
+
+      return {
+        nome: name,
+        whatsapp: phone,
+        endereco: address,
+        formaPagamento: payment,
+        tamanhoPack: state.targetPackSize,
+        subtotal: subtotal,
+        desconto: discountValue,
+        taxaFrete: state.shippingCost,
+        total: total,
+        itens: itens,
+        payloadWhatsapp: whatsappText
+      };
+    }
+
+    function updateOrderPreview() {
+      const order = generateOrderData();
+      document.getElementById('orderPreviewText').textContent = order.payloadWhatsapp;
+    }
+
+    ['custName', 'custPhone', 'custAddress', 'custPayment'].forEach(id => {
+      const elem = document.getElementById(id);
+      if (elem) elem.addEventListener('input', updateOrderPreview);
+    });
+
+    // Enviar Pedido: Grava na API SQLite e abre o WhatsApp
+    async function sendOrderToWhatsApp() {
+      const order = generateOrderData();
+
+      try {
+        const resp = await fetch('/api/pedidos', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(order)
+        });
+        const result = await resp.json();
+        console.log('Pedido salvo no SQLite com ID:', result.pedidoId);
+      } catch (e) {
+        console.warn('Executando modo cliente offline:', e);
+      }
+
+      const phone = "5571999999999";
+      const encodedMsg = encodeURIComponent(order.payloadWhatsapp);
+      const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodedMsg}`;
+      window.open(url, '_blank');
+      closeCheckoutModal();
+    }
+
+    // Modal B2B
+    function openB2BModal() {
+      document.getElementById('b2bModal').classList.add('open');
+    }
+    function closeB2BModal() {
+      document.getElementById('b2bModal').classList.remove('open');
+    }
+    async function submitB2BForm() {
+      const data = {
+        nome: document.getElementById('b2bName').value,
+        whatsapp: document.getElementById('b2bPhone').value,
+        empresa: document.getElementById('b2bCompany').value,
+        estimativa: document.getElementById('b2bEst').value
+      };
+
+      if (!data.nome || !data.whatsapp) {
+        alert('Por favor, preencha o Nome e o WhatsApp!');
+        return;
+      }
+
+      try {
+        await fetch('/api/b2b', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        alert('Dados salvos no SQLite com sucesso! Redirecionando para a equipe comercial...');
+      } catch (err) {
+        console.log('Fallback B2B');
+      }
+
+      const msg = `Olá! Meu nome é ${data.nome} da empresa ${data.empresa || 'Parceiro'}. Gostaria de solicitar a tabela oficial B2B de Revenda (Estimativa: ${data.estimativa}).`;
+      window.open(`https://wa.me/5571999999999?text=${encodeURIComponent(msg)}`, '_blank');
+      closeB2BModal();
+    }
+
+    // Simulação de frete via API
+    async function calculateShipping() {
+      const cep = document.getElementById('cepInput').value.trim();
+      if (!cep) {
+        alert('Por favor, informe seu CEP ou bairro.');
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/frete/simular', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ cep, packSize: state.targetPackSize })
+        });
+        const data = await res.json();
+        state.shippingCost = data.entregaExpressa.valor;
+        document.getElementById('shippingExpressPrice').textContent = data.entregaExpressa.valor === 0 ? 'GRÁTIS' : `R$ ${data.entregaExpressa.valor.toFixed(2).replace('.', ',')}`;
+        document.getElementById('shippingTimeDesc').textContent = data.entregaExpressa.prazo;
+        alert(`Frete atualizado com o SQLite para "${cep}":\n🛵 Entrega Expressa: R$ ${data.entregaExpressa.valor.toFixed(2).replace('.', ',')}\n📍 Click & Collect: GRÁTIS`);
+        updateBuilderUI();
+      } catch (e) {
+        alert(`Calculado para "${cep}":\n🛵 Entrega Expressa Térmica: R$ 5,00 (40-60 min)\n📍 Click & Collect: GRÁTIS`);
+      }
+    }
+
+    // Inicialização ao carregar a página
+    document.addEventListener('DOMContentLoaded', () => {
+      loadProductsFromDB('all');
+      state.boxItems = [
+        'Tradicional Cremoso',
+        'Tradicional Cremoso',
+        'High Protein Turbo'
+      ];
+      updateBuilderUI();
+    });
+  </script>
+</body>
+</html>

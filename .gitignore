@@ -1,0 +1,11 @@
+# Dependências do Node
+node_modules/
+package-lock.json
+
+# Logs e arquivos de sistema
+*.log
+.DS_Store
+Thumbs.db
+
+# Banco SQLite local (dados temporários de teste local)
+# database.sqlite
