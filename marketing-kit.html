@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kit Oficial de Marketing & Lançamento (Fase 06) | Açaí na Garrafa D2C</title>
+  <!-- Google Fonts & Lucide Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --primary: #4A0E4E;
+      --primary-dark: #200424;
+      --accent: #00E599;
+      --accent-hover: #00C784;
+      --accent-glow: rgba(0, 229, 153, 0.35);
+      --dark-bg: #0d010e;
+      --surface: #18031d;
+      --surface-card: #25072c;
+      --surface-border: #44144e;
+      --text-main: #FFFFFF;
+      --text-muted: #B8A5BE;
+      --text-dim: #7E6685;
+      --warning: #FFB300;
+      --blue: #00B4D8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--dark-bg);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.6;
+      padding-bottom: 80px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* TOPO */
+    header {
+      padding: 50px 0 40px;
+      text-align: center;
+      background: radial-gradient(circle at 50% 20%, rgba(108, 29, 114, 0.4) 0%, transparent 70%);
+      border-bottom: 1px solid var(--surface-border);
+      margin-bottom: 50px;
+    }
+
+    .badge-fase {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 229, 153, 0.15);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 6px 18px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #FFF, #00E599);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* SEÇÕES DE MARKETING */
+    .marketing-block {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 24px;
+      padding: 36px;
+      margin-bottom: 35px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    .block-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .block-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.4rem;
+      color: #FFF;
+    }
+
+    .btn-copy {
+      background: var(--accent);
+      color: #032514;
+      font-weight: 800;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      border: none;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-copy:hover {
+      background: #33ffb5;
+      transform: scale(1.03);
+    }
+
+    /* CAIXA DE TEXTO / POST */
+    .copy-box {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid var(--surface-border);
+      border-radius: 16px;
+      padding: 24px;
+      position: relative;
+    }
+
+    .copy-box pre {
+      white-space: pre-wrap;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #E2E8F0;
+    }
+
+    /* GRID DE CARROSSEL / ROTEIRO DE VÍDEO */
+    .slides-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .slide-card {
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      border-radius: 16px;
+      padding: 20px;
+      position: relative;
+    }
+
+    .slide-num {
+      position: absolute;
+      top: -12px;
+      right: 16px;
+      background: var(--accent);
+      color: #032514;
+      font-size: 0.72rem;
+      font-weight: 900;
+      padding: 2px 8px;
+      border-radius: 9999px;
+    }
+
+    .slide-card h4 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+      color: #FFF;
+    }
+
+    .slide-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .slide-visual {
+      background: rgba(0,0,0,0.3);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      color: #82aaff;
+      border-left: 2px solid var(--accent);
+    }
+
+    /* GUIA DE BIO & PERFIL */
+    .bio-preview-box {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      border-radius: 18px;
+      padding: 24px;
+      flex-wrap: wrap;
+    }
+
+    .avatar-mock {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      overflow: hidden;
+      box-shadow: 0 0 20px var(--accent-glow);
+      flex-shrink: 0;
+    }
+
+    .avatar-mock img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .bio-text {
+      flex: 1;
+      font-size: 0.95rem;
+    }
+
+    .bio-text strong {
+      font-size: 1.1rem;
+      color: #FFF;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .bio-lines {
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+
+    .bio-link {
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .toast-copy {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--accent);
+      color: #032514;
+      padding: 12px 24px;
+      border-radius: 9999px;
+      font-weight: 800;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      display: none;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <span class="badge-fase"><i data-lucide="flame" style="width: 16px; height: 16px;"></i> Fase 06 Oficial • Kit de Marketing</span>
+      <h1>Pronto para Copiar & Postar!</h1>
+      <p>Todas as legendas, bio do Instagram, roteiro de Reels/Stories e mensagens comerciais para fechar vendas no WhatsApp e em academias.</p>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- 1. BIO PROFISSIONAL DO INSTAGRAM -->
+    <section class="marketing-block">
+      <div class="block-header">
+        <div class="block-title">
+          <i data-lucide="instagram" style="color: #E1306C;"></i>
+          <span>1. Como Montar a Bio Oficial do seu Instagram</span>
+        </div>
+        <button class="btn-copy" onclick="copyText('bioCopy')">
+          <i data-lucide="copy" style="width: 16px; height: 16px;"></i>
+          <span>Copiar Bio</span>
+        </button>
+      </div>
+
+      <div class="bio-preview-box">
+        <div class="avatar-mock">
+          <img src="logo-instagram.jpg" alt="Logo Instagram">
+        </div>
+        <div class="bio-text">
+          <strong>AÇAÍ NA GARRAFA ® | D2C</strong>
+          <div class="bio-lines" id="bioCopy">🍇 A revolução do açaí artesanal funcional
+❄️ Entregue trincando de gelado em bolsa térmica
+🍃 100% Puro • Sem xaropes industriais • Livre de BPA
+💪 Opções High Protein (25g) & Zero Açúcar
+👇 Monte seu Pack Semanal com 7% a 15% OFF</div>
+          <span class="bio-link">🔗 linktr.ee/acainagarrafa (ou seu WhatsApp)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. POST OFICIAL DE LANÇAMENTO (FEED CARROSSEL) -->
+    <section class="marketing-block">
+      <div class="block-header">
+        <div class="block-title">
+          <i data-lucide="megaphone" style="color: var(--accent);"></i>
+          <span>2. Post de Lançamento Oficial (Legenda Pronta para o Feed)</span>
+        </div>
+        <button class="btn-copy" onclick="copyText('postLancamento')">
+          <i data-lucide="copy" style="width: 16px; height: 16px;"></i>
+          <span>Copiar Legenda</span>
+        </button>
+      </div>
+
+      <div class="copy-box">
+        <pre id="postLancamento">🚀 FINALMENTE CHEGOU: O SEU NOVO JEITO DE TOMAR AÇAÍ! 🍇❄️
+
+Esqueça tigelas derretendo, excesso de xarope industrial de glicose e bagunça. 
+
+Apresentamos o AÇAÍ NA GARRAFA: a polpa especial batida fresca, envasada em garrafas ergonômicas prontas para beber ou levar direto pro treino, estudo ou trabalho.
+
+Por que ele é diferente de tudo o que você já provou?
+✅ 100% Puro e Artesanal (Sem espessantes ou conservantes químicos)
+✅ Zero Xarope de Milho (Apenas a energia limpa da fruta)
+✅ Logística Fria Garantida: entregue trincando a -4°C na sua porta em embalagem isotérmica
+✅ Embalagem PET Virgem 100% Livre de BPA
+
+Escolha o seu blend ideal:
+1️⃣ Tradicional Cremoso (com banana e guaraná da Amazônia)
+2️⃣ High Protein Turbo (reforçado com 25g de Whey Isolado e pasta de amendoim)
+3️⃣ Zero Açúcar Clean Label (com água de coco e stevia natural)
+4️⃣ Red Berries Fresh (com morangos e amoras silvestres)
+
+🔥 PROMOÇÃO DE LANÇAMENTO:
+Monte seu Kit Semanal (6 garrafas) pelo nosso site e ganhe 7% OFF na hora + desconto especial de frete!
+
+👉 Clique no link da nossa bio e monte sua caixa agora mesmo antes que acabe o primeiro lote congelado!
+
+#acainagarrafa #acai #pretreino #vidasaudavel #nutricaoesportiva #deliverygelado #d2c</pre>
+      </div>
+    </section>
+
+    <!-- 3. ROTEIRO DE REELS / TIKTOK (VÍDEO DE 30 SEGUNDOS) -->
+    <section class="marketing-block">
+      <div class="block-header">
+        <div class="block-title">
+          <i data-lucide="video" style="color: var(--blue);"></i>
+          <span>3. Roteiro de Vídeo Curto para Reels / TikTok (30 Segundos)</span>
+        </div>
+        <button class="btn-copy" onclick="copyText('roteiroVideo')">
+          <i data-lucide="copy" style="width: 16px; height: 16px;"></i>
+          <span>Copiar Roteiro</span>
+        </button>
+      </div>
+
+      <div class="slides-grid">
+        <div class="slide-card">
+          <span class="slide-num">00 a 05s</span>
+          <h4>1. O Gancho (Atenção Máxima)</h4>
+          <p><strong>Cena:</strong> Pegando a garrafa suando gelada e dando uma batidinha na mesa.</p>
+          <div class="slide-visual">🗣️ "Você ainda toma açaí do jeito antigo que derrete em 5 minutos?"</div>
+        </div>
+
+        <div class="slide-card">
+          <span class="slide-num">05 a 15s</span>
+          <h4>2. A Revelação do Produto</h4>
+          <p><strong>Cena:</strong> Agitando a garrafa vigorosamente e abrindo o lacre com barulho de gás/fresco.</p>
+          <div class="slide-visual">🗣️ "Esse aqui é o Açaí na Garrafa. Batido a frio, polpa grossa de verdade, sem xarope de milho e cabe na mochila da academia."</div>
+        </div>
+
+        <div class="slide-card">
+          <span class="slide-num">15 a 25s</span>
+          <h4>3. O Diferencial de Frio</h4>
+          <p><strong>Cena:</strong> Tirando a garrafa da bolsa térmica com gelo ou abrindo o freezer abastecido.</p>
+          <div class="slide-visual">🗣️ "A gente entrega trincando de gelado na sua casa. Você guarda no congelador e consome a semana toda!"</div>
+        </div>
+
+        <div class="slide-card">
+          <span class="slide-num">25 a 30s</span>
+          <h4>4. Chamada para Ação (CTA)</h4>
+          <p><strong>Cena:</strong> Mostrando o site na tela do celular e dando um gole.</p>
+          <div class="slide-visual">🗣️ "Link na bio pra montar sua caixa de 6 garrafas com desconto. Corre lá!"</div>
+        </div>
+      </div>
+
+      <pre id="roteiroVideo" style="display: none;">[ROTEIRO REELS - AÇAÍ NA GARRAFA]
+00-05s: (Cena da garrafa suando gelada) "Você ainda toma açaí do jeito antigo que derrete em 5 minutos?"
+05-15s: (Agitando a garrafa e abrindo) "Esse aqui é o Açaí na Garrafa. Batido a frio, polpa grossa de verdade, sem xarope de milho e cabe na mochila da academia."
+15-25s: (Tirando da bolsa térmica) "A gente entrega trincando de gelado na sua casa. Você guarda no congelador e consome a semana toda!"
+25-30s: (Mostrando o site) "Link na bio pra montar sua caixa de 6 garrafas com desconto. Corre lá!"</pre>
+    </section>
+
+    <!-- 4. SCRIPT DE VENDAS PARA ACADEMIAS & PARCEIROS B2B -->
+    <section class="marketing-block">
+      <div class="block-header">
+        <div class="block-title">
+          <i data-lucide="briefcase" style="color: var(--warning);"></i>
+          <span>4. Mensagem de Abordagem para Academias, Boxes e Cafeterias (B2B)</span>
+        </div>
+        <button class="btn-copy" onclick="copyText('copyB2B')">
+          <i data-lucide="copy" style="width: 16px; height: 16px;"></i>
+          <span>Copiar Mensagem</span>
+        </button>
+      </div>
+
+      <div class="copy-box">
+        <pre id="copyB2B">Olá, tudo bem? 
+
+Meu nome é Marcos Vinícius, sou fundador da marca AÇAÍ NA GARRAFA aqui da região.
+
+Estamos apresentando aos gestores de academias e estúdios fitness a nossa linha de açaí artesanal funcional engarrafado (com opções reforçadas em 25g de Whey Protein Isolado e opções Zero Açúcar Clean Label).
+
+O produto é perfeito para o modelo "Pegue e Leve" (Grab & Go) no pós-treino dos seus alunos:
+• Garrafas individuais seladas (Zero preparo ou bagunça no balcão)
+• Margem de revenda excelente para o seu espaço (de 35% a 45% de lucro)
+• Fornecemos suporte de exposição térmica ou reposição programada
+
+Gostaria de agendar 5 minutinhos para levar 2 garrafas geladas de cortesia para vocês degustarem hoje ou amanhã? 
+
+Se preferir, posso enviar a Tabela Oficial de Atacado em PDF por aqui mesmo. Um abraço!</pre>
+      </div>
+    </section>
+
+    <!-- 5. MENSAGEM DE WHATSAPP PARA CLIENTES (STATUS DO PEDIDO) -->
+    <section class="marketing-block">
+      <div class="block-header">
+        <div class="block-title">
+          <i data-lucide="message-square" style="color: #25D366;"></i>
+          <span>5. Mensagem de Confirmação e Fidelização no WhatsApp</span>
+        </div>
+        <button class="btn-copy" onclick="copyText('copyPosVenda')">
+          <i data-lucide="copy" style="width: 16px; height: 16px;"></i>
+          <span>Copiar Mensagem</span>
+        </button>
+      </div>
+
+      <div class="copy-box">
+        <pre id="copyPosVenda">Olá! 🍇❄️
+
+Recebemos seu pedido de Açaí na Garrafa com sucesso! 
+
+Seu pack já foi acondicionado na nossa bolsa isotérmica lacrada com gelo reciclável para manter a consistência perfeita até chegar aí.
+
+💡 DICA DE CONSUMO DO MESTRE:
+Assim que chegar, agite bem a garrafa antes de beber para homogeneizar a cremosidade da fruta. Se for consumir mais tarde, guarde direto no congelador (dura até 90 dias intacto!).
+
+Qualquer dúvida, estamos por aqui. Bom apetite e excelente energia no seu dia!</pre>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="toast-copy" id="toastCopy">✅ Copiado para a área de transferência!</div>
+
+  <script>
+    lucide.createIcons();
+
+    function copyText(elementId) {
+      const text = document.getElementById(elementId).innerText || document.getElementById(elementId).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('toastCopy');
+        toast.style.display = 'block';
+        setTimeout(() => toast.style.display = 'none', 2500);
+      });
+    }
+  </script>
+</body>
+</html>
